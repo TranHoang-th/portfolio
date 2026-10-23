@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f9fc">
+  <meta name="description" content="Portfolio cá nhân của Trần Hoàng — sinh viên Công nghệ Thông tin tại Đại học FPT Cần Thơ. Khám phá kỹ năng, dự án và liên hệ hợp tác.">
+  <title>Trần Hoàng | IT Student &amp; Portfolio</title>
+
+  <!-- Font chữ Google Fonts và icon Font Awesome: cần Internet để tải lần đầu -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" referrerpolicy="no-referrer">
+  <style>
+    /* =====================================================
+       1. BIẾN MÀU - Chỉnh màu website tại đây
+       ===================================================== */
+    :root {
+      color-scheme: light;
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --surface-soft: #edf3fb;
+      --text: #182a46;
+      --muted: #62738e;
+      --border: #e0e8f1;
+      --primary: #274b92;
+      --primary-hover: #1d3d7c;
+      --accent: #f0814d;
+      --accent-soft: #fff0e7;
+      --header-bg: rgba(247, 249, 252, 0.87);
+      --shadow: 0 12px 32px rgba(26, 50, 89, 0.07);
+      --shadow-hover: 0 22px 50px rgba(26, 50, 89, 0.14);
+      --radius: 20px;
+      --container: 1160px;
+    }
+    /* Dark mode được bật bằng data-theme="dark" trong JavaScript */
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1425;
+      --surface: #142239;
+      --surface-soft: #1b2d49;
+      --text: #f2f6ff;
+      --muted: #a9b8d0;
+      --border: #2c3c57;
+      --primary: #7fa8f8;
+      --primary-hover: #a1bfff;
+      --accent: #ffa474;
+      --accent-soft: #392d2a;
+      --header-bg: rgba(11, 20, 37, 0.90);
+      --shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+      --shadow-hover: 0 22px 50px rgba(0, 0, 0, 0.27);
+    }
+
+    /* =====================================================
+       2. THIẾT LẬP CHUNG
+       ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 95px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 400 16px/1.75 'Inter', sans-serif; transition: background-color .25s, color .25s; }
+    body.modal-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; width: 100%; }
+    ::selection { background: var(--accent); color: #10243f; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .container { width: min(calc(100% - 40px), var(--container)); margin-inline: auto; }
+    .section { padding: 108px 0; scroll-margin-top: 76px; }
+    .section-muted { background: var(--surface-soft); }
+    .section-head { max-width: 670px; margin: 0 auto 48px; text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--primary); font-size: .79rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; display: block; width: 22px; height: 2px; background: var(--accent); }
+    .section-head .eyebrow::after { content: ''; display: block; width: 22px; height: 2px; background: var(--accent); }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; line-height: 1.28; letter-spacing: -.035em; }
+    h2 { font-size: clamp(2rem, 4vw, 2.85rem); margin: 13px 0 16px; }
+    h3 { font-size: 1.18rem; margin-bottom: 10px; }
+    p { color: var(--muted); }
+    .section-head p { margin: 0 auto; max-width: 590px; }
+    .accent { color: var(--accent); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 13px 23px; border: 1px solid transparent; border-radius: 11px; font-weight: 700; font-size: .94rem; line-height: 1.35; transition: transform .22s, background-color .22s, border-color .22s, box-shadow .22s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { background: #274b92; color: #fff; box-shadow: 0 9px 24px rgba(39,75,146,.2); }
+    .btn-primary:hover { background: #1d3d7c; box-shadow: 0 12px 28px rgba(39,75,146,.29); }
+    .btn-outline { border-color: var(--border); background: var(--surface); color: var(--text); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+    .btn:disabled { opacity: .75; cursor: wait; transform: none; }
+    .hint { font-size: .82rem; color: var(--muted); }
+
+    /* =====================================================
+       3. STICKY HEADER + MENU DI ĐỘNG
+       ===================================================== */
+    .header { position: sticky; top: 0; z-index: 50; background: transparent; border-bottom: 1px solid transparent; transition: background .25s, box-shadow .25s, border-color .25s; }
+    .header.scrolled, .header.menu-open { background: var(--header-bg); border-color: var(--border); box-shadow: 0 10px 25px rgba(0,0,0,.045); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 80px; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-family: 'Poppins', sans-serif; font-size: 1.13rem; font-weight: 800; white-space: nowrap; }
+    .brand-mark { display: grid; place-items: center; width: 43px; height: 43px; background: #274b92; color: white; border-radius: 13px; font-size: .96rem; letter-spacing: -.05em; }
+    .brand-dot { color: var(--accent); }
+    .nav { display: flex; align-items: center; gap: 26px; margin-left: auto; }
+    .nav a { color: var(--muted); font-size: .88rem; font-weight: 700; transition: color .2s; white-space: nowrap; }
+    .nav a:hover, .nav a.active { color: var(--primary); }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
+    .icon-btn { width: 43px; height: 43px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--text); font-size: 1.05rem; transition: color .2s, border-color .2s, background .2s; }
+    .icon-btn:hover { color: var(--primary); border-color: var(--primary); }
+    #menu-toggle { display: none; }
+
+    /* =====================================================
+       4. HERO - Ảnh đại diện bên trái, thông tin bên phải
+       ===================================================== */
+    .hero { position: relative; overflow: hidden; padding: 78px 0 115px; isolation: isolate; }
+    .hero::before { content: ''; position: absolute; inset: -110px 0 0; z-index: -2; background: radial-gradient(circle at 21% 39%, rgba(100, 151, 236, .18), transparent 32%), radial-gradient(circle at 90% 14%, rgba(240, 129, 77, .11), transparent 30%); }
+    .hero::after { content: ''; position: absolute; inset: 0; z-index: -1; opacity: .33; background-image: radial-gradient(var(--border) 1px, transparent 1px); background-size: 25px 25px; mask-image: linear-gradient(90deg, transparent 10%, #000 57%, transparent 100%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: clamp(50px, 8vw, 118px); }
+    .portrait-wrap { width: min(100%, 460px); position: relative; margin: 22px auto 0; }
+    .portrait-ring { aspect-ratio: 1; padding: 17px; border: 2px solid rgba(111, 154, 224, .32); border-radius: 50%; position: relative; }
+    .portrait-ring::after { content: ''; position: absolute; inset: 8px; border: 1px dashed rgba(111,154,224,.32); border-radius: 50%; pointer-events: none; }
+    .portrait { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; box-shadow: 0 25px 65px rgba(40,69,115,.14); background: #dbe7f5; }
+    .floating-pill { position: absolute; display: flex; gap: 11px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 12px 17px; box-shadow: var(--shadow); font-weight: 800; font-size: .83rem; line-height: 1.25; }
+    .floating-pill i { font-size: 1.25rem; color: var(--accent); }
+    .pill-code { top: 17%; right: -31px; }
+    .pill-location { left: -22px; bottom: 12%; }
+    .pill-location i { color: var(--primary); }
+    .status-line { display: inline-flex; gap: 9px; align-items: center; padding: 7px 13px; border-radius: 30px; border: 1px solid var(--border); background: var(--surface); color: var(--primary); font-size: .8rem; font-weight: 800; }
+    .status-line .dot { width: 8px; height: 8px; background: #37b68b; border-radius: 50%; box-shadow: 0 0 0 4px rgba(55,182,139,.13); }
+    .hero h1 { font-size: clamp(3.2rem, 6vw, 5.2rem); letter-spacing: -.06em; line-height: 1.12; margin: 24px 0 15px; }
+    .hero-role { font-family: 'Poppins',sans-serif; color: var(--primary); font-weight: 700; font-size: clamp(1rem,2.2vw,1.24rem); margin-bottom: 16px; }
+    .hero-desc { font-size: 1.16rem; line-height: 1.85; max-width: 535px; margin-bottom: 30px; }
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; }
+    .hero-social { margin-top: 34px; display: flex; align-items: center; gap: 15px; }
+    .hero-social > span { color: var(--muted); font-size: .84rem; font-weight: 600; }
+    .social-link { display: inline-grid; place-items: center; width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 11px; background: var(--surface); color: var(--primary); transition: transform .2s, background .2s; }
+    .social-link:hover { transform: translateY(-3px); background: var(--surface-soft); }
+    .hero-content { animation: fadeInUp .85s ease both; }
+    .portrait-wrap { animation: fadeInUp .85s .13s ease both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* =====================================================
+       5. ABOUT + BỘ ĐẾM SỐ
+       ===================================================== */
+    .about-layout { display: grid; grid-template-columns: 1.02fr .98fr; gap: 65px; align-items: center; }
+    .about-copy h2 { margin: 15px 0 21px; }
+    .about-copy p { margin-bottom: 15px; }
+    .about-note { display: flex; align-items: flex-start; gap: 13px; margin-top: 24px; padding: 17px 20px; background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; color: var(--text); font-weight: 600; font-size: .92rem; }
+    .about-note i { color: var(--accent); margin-top: 5px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
+    .stat-card { text-align: center; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 31px 10px; box-shadow: var(--shadow); }
+    .stat-icon { display: inline-grid; place-items: center; width: 48px; height: 48px; margin-bottom: 19px; border-radius: 15px; background: var(--accent-soft); color: var(--accent); font-size: 1.18rem; }
+    .stat-value { display: block; color: var(--primary); font: 800 clamp(1.9rem,3.4vw,2.65rem)/1.2 'Poppins', sans-serif; }
+    .stat-label { display: block; font-size: .79rem; font-weight: 700; line-height: 1.55; color: var(--muted); margin-top: 9px; }
+    .stats-footnote { grid-column: 1/-1; text-align: center; margin: 0; font-size: .79rem; }
+
+    /* =====================================================
+       6. SKILLS + PROJECTS
+       ===================================================== */
+    .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 23px; }
+    .skill-card { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius); padding: 30px 27px; box-shadow: var(--shadow); transition: transform .27s, box-shadow .27s, border-color .27s, background-color .27s; }
+    .skill-card:hover { transform: translateY(-9px); border-color: rgba(240,129,77,.5); box-shadow: var(--shadow-hover); background: var(--surface-soft); }
+    .skill-icon { display: grid; place-items: center; width: 59px; height: 59px; margin-bottom: 21px; color: var(--primary); background: var(--surface-soft); border-radius: 17px; font-size: 1.5rem; }
+    .skill-card:hover .skill-icon { background: var(--accent-soft); color: var(--accent); }
+    .skill-card h3 { margin-bottom: 8px; }
+    .skill-card p { margin: 0; font-size: .9rem; }
+    .project-card { overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); box-shadow: var(--shadow); transition: transform .27s, box-shadow .27s; }
+    .project-card:hover { transform: translateY(-7px); box-shadow: var(--shadow-hover); }
+    .project-image { position: relative; overflow: hidden; aspect-ratio: 16/10; background: var(--surface-soft); }
+    .project-image img { height: 100%; object-fit: cover; transition: transform .5s ease; }
+    .project-image::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(17,32,61,.48)); opacity: 0; transition: opacity .3s; pointer-events: none; }
+    .project-card:hover .project-image img { transform: scale(1.075); }
+    .project-card:hover .project-image::after { opacity: 1; }
+    .project-image .image-chip { position: absolute; top: 15px; left: 16px; padding: 5px 12px; background: rgba(255,255,255,.9); color: #274b92; border-radius: 40px; font-size: .73rem; font-weight: 800; z-index: 1; }
+    .project-body { padding: 23px 24px 25px; }
+    .project-body h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .project-body p { font-size: .87rem; line-height: 1.7; min-height: 47px; margin-bottom: 18px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 21px; }
+    .tag { display: inline-flex; padding: 4px 10px; border-radius: 7px; background: var(--surface-soft); color: var(--primary); font-size: .72rem; font-weight: 800; }
+    .detail-btn { display: inline-flex; align-items: center; gap: 8px; background: none; border: none; padding: 0; color: var(--primary); font-weight: 800; font-size: .89rem; }
+    .detail-btn i { transition: transform .2s; }
+    .detail-btn:hover i { transform: translateX(5px); }
+
+    /* =====================================================
+       7. DỊCH VỤ / BẢNG GIÁ THAM KHẢO
+       ===================================================== */
+    .services-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-items: stretch; gap: 22px; }
+    .service-card { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 21px; padding: 32px 27px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+    .service-card.featured { border: 2px solid var(--accent); box-shadow: var(--shadow-hover); transform: translateY(-9px); }
+    .popular { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: var(--accent); color: #1c2638; border-radius: 40px; padding: 5px 17px; font-size: .75rem; font-weight: 800; }
+    .service-icon { color: var(--accent); font-size: 1.6rem; margin-bottom: 18px; }
+    .service-card h3 { margin-bottom: 11px; }
+    .service-price { color: var(--primary); font: 800 clamp(1.45rem,2.4vw,1.9rem)/1.2 'Poppins',sans-serif; margin-bottom: 9px; }
+    .service-desc { font-size: .86rem; min-height: 45px; margin: 0 0 22px; }
+    .service-card ul { list-style: none; padding: 20px 0 5px; margin: 0 0 24px; border-top: 1px solid var(--border); display: grid; gap: 13px; flex: 1; }
+    .service-card li { display: flex; gap: 11px; color: var(--muted); font-size: .88rem; }
+    .service-card li i { margin-top: 5px; color: #24a979; }
+    .service-card .btn { width: 100%; }
+    .price-note { margin-top: 24px; margin-bottom: 0; text-align: center; font-size: .82rem; }
+
+    /* =====================================================
+       8. LIÊN HỆ + FORM DEMO
+       ===================================================== */
+    .contact-grid { display: grid; grid-template-columns: .87fr 1.13fr; gap: 48px; align-items: start; }
+    .contact-intro h3 { font-size: 1.62rem; margin-bottom: 14px; }
+    .contact-intro > p { margin-bottom: 28px; }
+    .contact-list { display: grid; gap: 18px; }
+    .contact-item { display: flex; gap: 15px; align-items: center; }
+    .contact-item > i { flex: 0 0 49px; display: grid; place-items: center; width: 49px; height: 49px; border-radius: 13px; background: var(--surface-soft); color: var(--primary); font-size: 1.1rem; }
+    .contact-item small { display: block; font-size: .78rem; color: var(--muted); font-weight: 600; }
+    .contact-item a, .contact-item span { display: inline-block; overflow-wrap: anywhere; font-size: .92rem; font-weight: 700; }
+    .contact-item a:hover { color: var(--primary); }
+    .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow); padding: 36px; }
+    .contact-form h3 { margin-bottom: 4px; }
+    .contact-form > p { font-size: .86rem; margin-bottom: 24px; }
+    .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 17px; }
+    .field { display: flex; flex-direction: column; gap: 7px; }
+    .field.full { grid-column: 1/-1; }
+    .field label { font-size: .82rem; font-weight: 800; }
+    .field input, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; outline: none; background: var(--bg); color: var(--text); transition: border-color .2s, box-shadow .2s; }
+    .field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: .75; }
+    .field input:focus, .field textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(100,151,236,.14); }
+    .field textarea { resize: vertical; min-height: 122px; }
+    .form-footer { margin-top: 22px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .form-status { min-height: 23px; margin: 0; font-size: .83rem; font-weight: 700; }
+    .form-status.success { color: #22996d; }
+    .form-status.sending { color: var(--primary); }
+
+    /* =====================================================
+       9. FOOTER + MODAL CHI TIẾT DỰ ÁN
+       ===================================================== */
+    .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 0; }
+    .footer-content { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+    .footer p { margin: 0; font-size: .83rem; }
+    .footer-social { display: flex; gap: 11px; align-items: center; }
+    .footer-social a { color: var(--primary); font-size: 1.05rem; padding: 5px; }
+    .footer-social a:hover { color: var(--accent); }
+    .project-dialog { width: min(92vw, 630px); max-height: min(86vh, 800px); overflow: auto; border: 1px solid var(--border); border-radius: 20px; padding: 0; background: var(--surface); color: var(--text); box-shadow: 0 30px 100px rgba(0,0,0,.32); }
+    .project-dialog::backdrop { background: rgba(4,14,29,.66); backdrop-filter: blur(5px); }
+    .dialog-close { position: absolute; right: 17px; top: 17px; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text); }
+    .dialog-preview { width: 100%; aspect-ratio: 16/8; object-fit: cover; background: var(--surface-soft); }
+    .dialog-content { padding: 26px 30px 32px; }
+    .dialog-content h3 { font-size: 1.6rem; margin: 10px 0 12px; }
+    .dialog-content p { font-size: .94rem; margin-bottom: 18px; }
+    .dialog-content .tags { margin-bottom: 15px; }
+
+    /* =====================================================
+       10. HIỆU ỨNG XUẤT HIỆN KHI CUỘN
+       ===================================================== */
+    .js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* =====================================================
+       11. RESPONSIVE: TABLET & MOBILE
+       ===================================================== */
+    @media (max-width: 1050px) {
+      .nav { gap: 17px; }
+      .nav a { font-size: .82rem; }
+      .hero-grid { gap: 50px; }
+      .about-layout { gap: 35px; }
+      .services-grid { gap: 14px; }
+      .service-card { padding: 29px 20px; }
+    }
+    @media (max-width: 850px) {
+      .header-inner { min-height: 72px; }
+      #menu-toggle { display: grid; }
+      .nav { display: flex; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; margin: 0; padding: 0 20px; max-height: 0; overflow: hidden; background: var(--surface); border-bottom: 1px solid transparent; box-shadow: none; transition: max-height .28s, padding .28s, border-color .28s; }
+      .nav.open { max-height: 470px; padding: 10px 20px 15px; border-color: var(--border); box-shadow: var(--shadow); }
+      .nav a { font-size: .92rem; padding: 10px 5px; }
+      .hero { padding: 58px 0 90px; }
+      .hero-grid { grid-template-columns: 1fr 1.05fr; gap: 27px; }
+      .floating-pill { font-size: .73rem; padding: 10px; }
+      .pill-code { right: -8px; }
+      .pill-location { left: -8px; }
+      .about-layout { grid-template-columns: 1fr; }
+      .stats-grid { max-width: 650px; width: 100%; margin: 0 auto; }
+      .skills-grid, .projects-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .services-grid { grid-template-columns: 1fr 1fr; gap: 28px 18px; }
+      .service-card.featured { transform: none; }
+      .service-card:last-child { grid-column: 1/-1; max-width: calc(50% - 9px); width: 100%; justify-self: center; }
+      .contact-grid { gap: 24px; }
+      .contact-form { padding: 25px; }
+    }
+    @media (max-width: 640px) {
+      html { scroll-padding-top: 80px; }
+      .container { width: min(calc(100% - 32px), var(--container)); }
+      .section { padding: 77px 0; }
+      .section-head { margin-bottom: 35px; }
+      .hero { padding: 30px 0 74px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+      .portrait-wrap { width: min(73vw,310px); margin: 5px auto 0; }
+      .portrait-ring { padding: 11px; }
+      .floating-pill { font-size: .67rem; gap: 7px; padding: 9px; }
+      .pill-code { right: -24px; top: 15%; }
+      .pill-location { left: -20px; bottom: 12%; }
+      .hero-content { text-align: center; }
+      .hero h1 { margin-top: 18px; font-size: clamp(2.85rem, 11vw, 4.2rem); }
+      .hero-desc { font-size: 1rem; margin-inline: auto; }
+      .hero-actions, .hero-social { justify-content: center; }
+      .hero-actions .btn { flex: 1; min-width: 135px; padding: 13px 10px; }
+      .about-copy h2 { font-size: 2rem; }
+      .stats-grid { gap: 9px; }
+      .stat-card { padding: 22px 6px; }
+      .stat-icon { width: 40px; height: 40px; margin-bottom: 12px; }
+      .stat-value { font-size: 1.6rem; }
+      .stat-label { font-size: .68rem; }
+      .skills-grid, .projects-grid, .services-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skill-card { padding: 25px; }
+      .service-card, .service-card:last-child { grid-column: auto; max-width: none; }
+      .service-card.featured { margin-top: 8px; }
+      .contact-grid { gap: 35px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-content { justify-content: center; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .brand { font-size: 1rem; }
+      .brand-mark { width: 39px; height: 39px; }
+      .hero-actions { flex-direction: column; }
+      .portrait-wrap { width: min(68vw,260px); }
+      .floating-pill { font-size: .61rem; }
+      .pill-code { right: -12px; }
+      .pill-location { left: -12px; }
+      .contact-form { padding: 19px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- =====================================================
+       HEADER: Điều hướng + chuyển chế độ sáng/tối
+       ===================================================== -->
+  <header class="header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#trang-chu" aria-label="Về đầu trang Trần Hoàng">
+        <span class="brand-mark">TH</span><span>Trần Hoàng<span class="brand-dot">.</span></span>
+      </a>
+      <nav class="nav" id="main-nav" aria-label="Điều hướng chính">
+        <a href="#trang-chu" class="active">Trang chủ</a>
+        <a href="#ve-toi">Về tôi</a>
+        <a href="#ky-nang">Kỹ năng</a>
+        <a href="#du-an">Dự án</a>
+        <a href="#dich-vu">Dịch vụ</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="theme-toggle" type="button" aria-label="Bật chế độ tối" aria-pressed="false" title="Chuyển chế độ sáng/tối"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
+        <button class="icon-btn" id="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="main-nav"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: Đổi src của ảnh dưới đây thành ảnh cá nhân của bạn -->
+    <section class="hero" id="trang-chu" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="portrait-wrap">
+          <div class="portrait-ring">
+            <img class="portrait" src="https://placehold.co/700x700/dde8f7/274b92?text=Tran+Hoang" alt="Ảnh đại diện mẫu của Trần Hoàng, thay bằng ảnh cá nhân" width="700" height="700" fetchpriority="high">
+          </div>
+          <div class="floating-pill pill-code"><i class="fa-solid fa-code" aria-hidden="true"></i><span>Passion for<br>Technology</span></div>
+          <div class="floating-pill pill-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Cần Thơ,<br>Việt Nam</span></div>
+        </div>
+        <div class="hero-content">
+          <span class="status-line"><span class="dot"></span>Sẵn sàng học hỏi &amp; hợp tác</span>
+          <h1 id="hero-title">Xin chào, tôi là<br><span class="accent">Trần Hoàng</span></h1>
+          <p class="hero-role">Information Technology Student</p>
+          <p class="hero-desc">Biến ý tưởng thành sản phẩm số chuyên nghiệp. Tôi yêu thích việc tạo ra những giải pháp công nghệ hữu ích, trực quan và dễ sử dụng.</p>
+          <div class="hero-actions">
+            <a href="#du-an" class="btn btn-primary">Xem dự án <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="#lien-he" class="btn btn-outline">Liên hệ ngay <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+          </div>
+          <div class="hero-social"><span>Kết nối với tôi</span>
+            <a class="social-link" href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Trần Hoàng"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a class="social-link" href="mailto:trnhoang1107@gmail.com" aria-label="Gửi email cho Trần Hoàng"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME: Chỉnh nội dung giới thiệu và data-target của các con số -->
+    <section class="section section-muted" id="ve-toi" aria-labelledby="about-title">
+      <div class="container about-layout">
+        <div class="about-copy reveal">
+          <span class="eyebrow">Đôi nét về bản thân</span>
+          <h2 id="about-title">Về <span class="accent">tôi</span></h2>
+          <p>Tôi là <strong>Trần Hoàng</strong>, sinh viên năm 3 ngành Công nghệ Thông tin tại <strong>Đại học FPT Cần Thơ</strong>, với niềm yêu thích lập trình và phát triển phần mềm.</p>
+          <p>Trong quá trình học tập, tôi tập trung xây dựng nền tảng về lập trình hướng đối tượng, phát triển giao diện, cơ sở dữ liệu và quy trình làm việc nhóm.</p>
+          <p>Tôi luôn chủ động khám phá công nghệ mới, trau dồi kỹ năng qua các bài tập và dự án thực hành, hướng tới những sản phẩm dễ sử dụng và giải quyết được vấn đề thực tế.</p>
+          <div class="about-note"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><span>“Học hỏi mỗi ngày, cải thiện từng dòng code và luôn đặt trải nghiệm người dùng lên hàng đầu.”</span></div>
+        </div>
+        <div class="stats-grid reveal" aria-label="Số liệu minh họa">
+          <div class="stat-card"><span class="stat-icon"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="stat-value" data-target="1" data-suffix="+">0</span><span class="stat-label">Năm kinh nghiệm</span></div>
+          <div class="stat-card"><span class="stat-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span><span class="stat-value" data-target="6" data-suffix="+">0</span><span class="stat-label">Số dự án đã làm</span></div>
+          <div class="stat-card"><span class="stat-icon"><i class="fa-solid fa-face-smile" aria-hidden="true"></i></span><span class="stat-value" data-target="3" data-suffix="+">0</span><span class="stat-label">Khách hàng hài lòng</span></div>
+          <p class="stats-footnote">* Các con số trên là dữ liệu mẫu; hãy cập nhật theo thành tích thực tế.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS: 6 kỹ năng đề xuất cho sinh viên CNTT -->
+    <section class="section" id="ky-nang" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Năng lực của tôi</span><h2 id="skills-title">Kỹ năng <span class="accent">chuyên môn</span></h2><p>Những công nghệ và tư duy kỹ thuật tôi đang học tập, thực hành và phát triển mỗi ngày.</p></div>
+        <div class="skills-grid">
+          <article class="skill-card reveal"><div class="skill-icon"><i class="fa-brands fa-java" aria-hidden="true"></i></div><h3>Java &amp; OOP</h3><p>Lập trình hướng đối tượng, cấu trúc dữ liệu và xử lý logic.</p></article>
+          <article class="skill-card reveal"><div class="skill-icon"><i class="fa-brands fa-html5" aria-hidden="true"></i></div><h3>HTML, CSS &amp; JavaScript</h3><p>Phát triển giao diện web responsive và tương tác cơ bản.</p></article>
+          <article class="skill-card reveal"><div class="skill-icon"><i class="fa-solid fa-desktop" aria-hidden="true"></i></div><h3>C# &amp; WPF</h3><p>Xây dựng ứng dụng desktop và tổ chức giao diện theo MVVM.</p></article>
+          <article class="skill-card reveal"><div class="skill-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></div><h3>SQL &amp; Database</h3><p>Thiết kế bảng dữ liệu, truy vấn và quản lý dữ liệu quan hệ.</p></article>
+          <article class="skill-card reveal"><div class="skill-icon"><i class="fa-brands fa-git-alt" aria-hidden="true"></i></div><h3>Git &amp; GitHub</h3><p>Quản lý phiên bản, làm việc trên nhánh và phối hợp nhóm.</p></article>
+          <article class="skill-card reveal"><div class="skill-icon"><i class="fa-solid fa-object-group" aria-hidden="true"></i></div><h3>UI/UX &amp; Responsive</h3><p>Thiết kế bố cục rõ ràng, dễ dùng trên mọi thiết bị.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS: 6 dự án MẪU, chỉnh tên/ảnh/mô tả và dữ liệu chi tiết ở script -->
+    <section class="section section-muted" id="du-an" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Sản phẩm thực hành</span><h2 id="projects-title">Dự án <span class="accent">nổi bật</span></h2><p>Một số ví dụ phù hợp với định hướng CNTT của tôi. Đây là nội dung minh họa, cần cập nhật theo dự án thực tế trước khi xuất bản chính thức.</p></div>
+        <div class="projects-grid">
+          <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/dbe8f7/274b92?text=Cinema+Management" alt="Ảnh minh họa dự án quản lý rạp chiếu phim" width="960" height="600"><span class="image-chip">Web App</span></div><div class="project-body"><h3>Hệ thống quản lý rạp phim</h3><p>Quản lý phim, suất chiếu và thông tin đặt vé trên nền tảng web.</p><div class="tags"><span class="tag">Java</span><span class="tag">JSP</span><span class="tag">SQL</span></div><button class="detail-btn" type="button" data-project="cinema">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
+          <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/efe4f7/65488b?text=Student+Management" alt="Ảnh minh họa ứng dụng quản lý sinh viên" width="960" height="600"><span class="image-chip">Desktop</span></div><div class="project-body"><h3>Quản lý sinh viên WPF</h3><p>Ứng dụng desktop hỗ trợ thêm, sửa, xóa và tìm kiếm sinh viên.</p><div class="tags"><span class="tag">C#</span><span class="tag">WPF</span><span class="tag">MVVM</span></div><button class="detail-btn" type="button" data-project="student">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
+          <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/dcf3e8/23745b?text=Badminton+Booking" alt="Ảnh minh họa hệ thống đặt sân cầu lông" width="960" height="600"><span class="image-chip">Java App</span></div><div class="project-body"><h3>Quản lý sân cầu lông</h3><p>Quản lý sân, khách hàng và lịch đặt sân bằng tư duy OOP.</p><div class="tags"><span class="tag">Java</span><span class="tag">OOP</span><span class="tag">File I/O</span></div><button class="detail-btn" type="button" data-project="badminton">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
+          <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/fbe7dd/9e5634?text=Personal+Portfolio" alt="Ảnh minh họa website portfolio cá nhân" width="960" height="600"><span class="image-chip">Frontend</span></div><div class="project-body"><h3>Website Portfolio cá nhân</h3><p>Trang giới thiệu cá nhân tối giản, tương thích điện thoại và máy tính.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div><button class="detail-btn" type="button" data-project="portfolio">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
+          <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/e3e9fa/405da3?text=Study+Planner" alt="Ảnh minh họa lịch kế hoạch học tập" width="960" height="600"><span class="image-chip">Web Tool</span></div><div class="project-body"><h3>Study Planner</h3><p>Giao diện mẫu theo dõi công việc và sắp xếp lịch học cá nhân.</p><div class="tags"><span class="tag">JavaScript</span><span class="tag">CSS</span><span class="tag">LocalStorage</span></div><button class="detail-btn" type="button" data-project="planner">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
+          <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/f6eccd/91762d?text=Bubble+Sort" alt="Ảnh minh họa thuật toán Bubble Sort" width="960" height="600"><span class="image-chip">Algorithm</span></div><div class="project-body"><h3>Bubble Sort Practice</h3><p>Bài thực hành sắp xếp mảng, xử lý nhập liệu và tối ưu vòng lặp.</p><div class="tags"><span class="tag">Java</span><span class="tag">Algorithms</span><span class="tag">Arrays</span></div><button class="detail-btn" type="button" data-project="bubble">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES: Giá chỉ tham khảo, sửa theo dịch vụ thực tế -->
+    <section class="section" id="dich-vu" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Có thể hỗ trợ</span><h2 id="services-title">Dịch vụ tôi <span class="accent">cung cấp</span></h2><p>Các gói minh họa dành cho dự án nhỏ và cá nhân. Phạm vi công việc, chi phí sẽ được trao đổi cụ thể trước khi thực hiện.</p></div>
+        <div class="services-grid">
+          <article class="service-card reveal"><i class="service-icon fa-solid fa-file-code" aria-hidden="true"></i><h3>Trang web cơ bản</h3><div class="service-price">1.500.000đ</div><p class="service-desc">Một trang giới thiệu đơn giản, gọn gàng.</p><ul><li><i class="fa-solid fa-check" aria-hidden="true"></i>1 trang web giới thiệu</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Responsive mọi thiết bị</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Giao diện theo màu thương hiệu</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Form liên hệ giao diện</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>1 lần chỉnh sửa giao diện</li></ul><a href="#lien-he" class="btn btn-outline service-cta" data-service="Trang web cơ bản">Chọn gói này <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+          <article class="service-card featured reveal"><span class="popular"><i class="fa-solid fa-star" aria-hidden="true"></i> Phổ biến</span><i class="service-icon fa-solid fa-laptop-code" aria-hidden="true"></i><h3>Portfolio / Landing Page</h3><div class="service-price">3.000.000đ</div><p class="service-desc">Giao diện chỉn chu, nhiều khu vực nội dung.</p><ul><li><i class="fa-solid fa-check" aria-hidden="true"></i>Thiết kế giao diện cá nhân hóa</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Hiệu ứng mượt mà</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Tối ưu trải nghiệm mobile</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Tối ưu SEO cơ bản</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>2 lần chỉnh sửa giao diện</li></ul><a href="#lien-he" class="btn btn-primary service-cta" data-service="Portfolio / Landing Page">Chọn gói này <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+          <article class="service-card reveal"><i class="service-icon fa-solid fa-gears" aria-hidden="true"></i><h3>Giao diện theo yêu cầu</h3><div class="service-price">Liên hệ</div><p class="service-desc">Trao đổi giải pháp phù hợp với ý tưởng của bạn.</p><ul><li><i class="fa-solid fa-check" aria-hidden="true"></i>Phân tích nhu cầu ban đầu</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Tùy chỉnh bố cục &amp; chức năng</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Hỗ trợ giao diện đa thiết bị</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Thống nhất tiến độ thực hiện</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Hỗ trợ bàn giao mã nguồn</li></ul><a href="#lien-he" class="btn btn-outline service-cta" data-service="Giao diện theo yêu cầu">Trao đổi ngay <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+        </div>
+        <p class="price-note">* Giá và tính năng chỉ mang tính minh họa, chưa phải báo giá chính thức.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT: Form chỉ mô phỏng gửi, KHÔNG lưu hay gửi thông tin lên máy chủ -->
+    <section class="section section-muted" id="lien-he" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Kết nối &amp; hợp tác</span><h2 id="contact-title">Liên hệ <span class="accent">với tôi</span></h2><p>Bạn có ý tưởng, câu hỏi hoặc cơ hội hợp tác? Hãy kết nối để chúng ta cùng trao đổi.</p></div>
+        <div class="contact-grid">
+          <div class="contact-intro reveal">
+            <h3>Rất vui được trò chuyện!</h3><p>Bạn có thể liên hệ trực tiếp qua email, điện thoại hoặc Facebook. Tôi sẽ phản hồi khi có thể.</p>
+            <div class="contact-list">
+              <div class="contact-item"><i class="fa-regular fa-envelope" aria-hidden="true"></i><div><small>Email</small><a href="mailto:trnhoang1107@gmail.com">trnhoang1107@gmail.com</a></div></div>
+              <div class="contact-item"><i class="fa-solid fa-phone" aria-hidden="true"></i><div><small>Số điện thoại</small><a href="tel:+84974736573">0974 736 573</a></div></div>
+              <div class="contact-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><small>Địa chỉ</small><span>Cần Thơ, Việt Nam</span></div></div>
+              <div class="contact-item"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><div><small>Mạng xã hội</small><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer">Facebook / Trần Hoàng <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div>
+            </div>
+          </div>
+          <form class="contact-form reveal" id="contact-form" autocomplete="on">
+            <h3>Gửi lời nhắn</h3><p>Điền thông tin bên dưới để trải nghiệm form liên hệ demo.</p>
+            <div class="form-grid">
+              <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="fullName" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
+              <div class="field"><label for="email">Email <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="email@example.com" autocomplete="email" maxlength="150" required></div>
+              <div class="field full"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" maxlength="25"></div>
+              <div class="field full"><label for="message">Nội dung <span class="accent">*</span></label><textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" minlength="10" maxlength="2000" required></textarea></div>
+            </div>
+            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">Đây là form mô phỏng; không có email nào được gửi đi.</span></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER: Năm bản quyền được JavaScript tự cập nhật -->
+  <footer class="footer"><div class="container footer-content"><p>© <span id="current-year">2026</span> <strong>Trần Hoàng</strong>. All rights reserved.</p><div class="footer-social"><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="mailto:trnhoang1107@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a><a href="#trang-chu" aria-label="Quay lại đầu trang"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></div></div></footer>
+
+  <!-- Modal chi tiết: dùng thẻ dialog có sẵn của trình duyệt -->
+  <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" id="dialog-close" type="button" aria-label="Đóng chi tiết dự án"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    <img class="dialog-preview" id="dialog-image" alt="Ảnh minh họa dự án" src="https://placehold.co/960x480/dbe8f7/274b92?text=Du+an" width="960" height="480">
+    <div class="dialog-content"><span class="eyebrow">Dự án minh họa</span><h3 id="dialog-title"></h3><p id="dialog-description"></p><div id="dialog-tags" class="tags"></div><p class="hint">Thông tin demo. Hãy thay bằng mô tả, hình ảnh và đường dẫn dự án thật.</p><a class="btn btn-primary" href="#lien-he" id="dialog-contact">Trao đổi về dự án <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
+  </dialog>
+
+  <script>
+    'use strict';
+    /* =====================================================
+       1. DARK MODE: Lưu và khôi phục lựa chọn trong localStorage
+       ===================================================== */
+    document.documentElement.classList.add('js');
+    const themeToggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function applyTheme(theme) {
+      const dark = theme === 'dark';
+      root.dataset.theme = dark ? 'dark' : 'light';
+      themeToggle.setAttribute('aria-pressed', String(dark));
+      themeToggle.setAttribute('aria-label', dark ? 'Bật chế độ sáng' : 'Bật chế độ tối');
+      themeToggle.setAttribute('title', dark ? 'Chuyển sang chế độ sáng' : 'Chuyển sang chế độ tối');
+      themeToggle.innerHTML = dark
+        ? '<i class="fa-solid fa-sun" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
+      if (themeMeta) themeMeta.content = dark ? '#0b1425' : '#f7f9fc';
+    }
+    let savedTheme = null;
+    try { savedTheme = localStorage.getItem('tran-hoang-theme'); } catch (e) { /* Trình duyệt chặn lưu trữ: vẫn dùng được theme */ }
+    applyTheme(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+      try { localStorage.setItem('tran-hoang-theme', nextTheme); } catch (e) { /* Không ảnh hưởng giao diện */ }
+    });
+
+    /* =====================================================
+       2. HEADER STICKY: Đổi nền khi cuộn và menu mobile
+       ===================================================== */
+    const header = document.getElementById('site-header');
+    const nav = document.getElementById('main-nav');
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = [...nav.querySelectorAll('a')];
+    function updateHeader() { header.classList.toggle('scrolled', window.scrollY > 18); }
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+    function closeMenu() {
+      nav.classList.remove('open');
+      header.classList.remove('menu-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Mở menu');
+      menuToggle.innerHTML = '<i class="fa-solid fa-bars" aria-hidden="true"></i>';
+    }
+    menuToggle.addEventListener('click', () => {
+      const willOpen = !nav.classList.contains('open');
+      if (willOpen) {
+        nav.classList.add('open');
+        header.classList.add('menu-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', 'Đóng menu');
+        menuToggle.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i>';
+      } else closeMenu();
+    });
+    navLinks.forEach(link => link.addEventListener('click', closeMenu));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+    document.addEventListener('click', event => {
+      if (!header.contains(event.target) && nav.classList.contains('open')) closeMenu();
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth > 850) closeMenu(); });
+
+    /* =====================================================
+       3. REVEAL + ĐÁNH DẤU MENU + COUNTER KHI CUỘN
+       ===================================================== */
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .10, rootMargin: '0px 0px -25px 0px' });
+      revealElements.forEach(element => revealObserver.observe(element));
+    } else {
+      revealElements.forEach(element => element.classList.add('visible'));
+    }
+
+    if ('IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id));
+          }
+        });
+      }, { rootMargin: '-25% 0px -60% 0px', threshold: 0 });
+      document.querySelectorAll('main > section[id]').forEach(section => sectionObserver.observe(section));
+    }
+
+    const counters = document.querySelectorAll('[data-target]');
+    function animateCounter(element) {
+      const target = Number(element.dataset.target) || 0;
+      const suffix = element.dataset.suffix || '';
+      if (reduceMotion) { element.textContent = target.toLocaleString('vi-VN') + suffix; return; }
+      const duration = 1250;
+      const start = performance.now();
+      function frame(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        element.textContent = Math.round(target * easeOut).toLocaleString('vi-VN') + suffix;
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    if ('IntersectionObserver' in window) {
+      const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { animateCounter(entry.target); observer.unobserve(entry.target); }
+        });
+      }, { threshold: .6 });
+      counters.forEach(counter => counterObserver.observe(counter));
+    } else counters.forEach(animateCounter);
+
+    /* =====================================================
+       4. PROJECTS: Dữ liệu mẫu dùng cho hộp chi tiết (modal)
+       Muốn cá nhân hóa: thay các mô tả/ảnh/công nghệ tại đây
+       ===================================================== */
+    const projectDetails = {
+      cinema: { title: 'Hệ thống quản lý rạp phim', description: 'Ví dụ về hệ thống quản lý rạp chiếu phim phục vụ bài tập nhóm: tổ chức danh sách phim, lịch chiếu, phòng chiếu và các thao tác quản trị. Có thể bổ sung sơ đồ cơ sở dữ liệu, ảnh chụp màn hình và link GitHub sau khi hoàn thiện.', tags: ['Java', 'JSP', 'SQL'], image: 'https://placehold.co/960x600/dbe8f7/274b92?text=Cinema+Management' },
+      student: { title: 'Quản lý sinh viên WPF', description: 'Ví dụ ứng dụng Windows Presentation Foundation dùng DataGrid hiển thị danh sách sinh viên, hỗ trợ thao tác thêm, sửa, xóa và tìm kiếm. Có thể tổ chức mã nguồn theo MVVM với ViewModel và RelayCommand.', tags: ['C#', 'WPF', 'MVVM'], image: 'https://placehold.co/960x600/efe4f7/65488b?text=Student+Management' },
+      badminton: { title: 'Quản lý sân cầu lông', description: 'Ví dụ ứng dụng quản lý cơ bản gồm sân cầu lông, khách hàng và lượt đặt sân. Áp dụng lớp đối tượng trong Java, danh sách Collections và lưu/đọc dữ liệu bằng file để luyện tập OOP.', tags: ['Java', 'OOP', 'File I/O'], image: 'https://placehold.co/960x600/dcf3e8/23745b?text=Badminton+Booking' },
+      portfolio: { title: 'Website Portfolio cá nhân', description: 'Mẫu website một trang giới thiệu bản thân, kỹ năng, sản phẩm và thông tin liên hệ. Xây dựng bằng HTML, CSS và JavaScript thuần, chú trọng giao diện responsive, dark mode và khả năng tiếp cận.', tags: ['HTML', 'CSS', 'JavaScript'], image: 'https://placehold.co/960x600/fbe7dd/9e5634?text=Personal+Portfolio' },
+      planner: { title: 'Study Planner', description: 'Ý tưởng giao diện lịch học tập dành cho sinh viên: sắp xếp đầu việc, theo dõi tiến độ và lưu dữ liệu trực tiếp trong trình duyệt. Đây là ví dụ dự án để thay thế bằng sản phẩm thực tế.', tags: ['JavaScript', 'CSS', 'LocalStorage'], image: 'https://placehold.co/960x600/e3e9fa/405da3?text=Study+Planner' },
+      bubble: { title: 'Bubble Sort Practice', description: 'Ví dụ bài thực hành thuật toán sắp xếp nổi bọt bằng Java: nhập kích thước mảng, sinh dữ liệu thử nghiệm, hiển thị mảng trước/sau sắp xếp và kiểm soát số lượt duyệt bằng biến swapped.', tags: ['Java', 'Algorithms', 'Arrays'], image: 'https://placehold.co/960x600/f6eccd/91762d?text=Bubble+Sort' }
+    };
+    const dialog = document.getElementById('project-dialog');
+    const dialogTags = document.getElementById('dialog-tags');
+    document.querySelectorAll('[data-project]').forEach(button => {
+      button.addEventListener('click', () => {
+        const data = projectDetails[button.dataset.project];
+        if (!data) return;
+        document.getElementById('dialog-title').textContent = data.title;
+        document.getElementById('dialog-description').textContent = data.description;
+        const image = document.getElementById('dialog-image');
+        image.src = data.image;
+        image.alt = 'Ảnh minh họa: ' + data.title;
+        dialogTags.replaceChildren(...data.tags.map(tag => {
+          const item = document.createElement('span');
+          item.className = 'tag';
+          item.textContent = tag;
+          return item;
+        }));
+        if (typeof dialog.showModal === 'function') {
+          dialog.showModal();
+          document.body.classList.add('modal-open');
+        } else {
+          // Dự phòng dành cho trình duyệt cũ không hỗ trợ <dialog>
+          window.alert(data.title + '\n\n' + data.description);
+        }
+      });
+    });
+    function closeDialog() { if (dialog.open) dialog.close(); }
+    document.getElementById('dialog-close').addEventListener('click', closeDialog);
+    document.getElementById('dialog-contact').addEventListener('click', closeDialog);
+    dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
+    dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
+
+    /* =====================================================
+       5. NÚT CHỌN DỊCH VỤ: Điền sẵn tên gói vào nội dung form
+       ===================================================== */
+    document.querySelectorAll('.service-cta').forEach(link => {
+      link.addEventListener('click', () => {
+        const message = document.getElementById('message');
+        const requested = 'Xin chào Hoàng, tôi muốn trao đổi về gói "' + link.dataset.service + '".';
+        if (!message.value.trim()) message.value = requested;
+      });
+    });
+
+    /* =====================================================
+       6. FORM DEMO: Không gửi dữ liệu thật, chỉ đổi trạng thái
+       Nếu muốn form hoạt động thật: kết nối backend/API ở đây.
+       ===================================================== */
+    const form = document.getElementById('contact-form');
+    const submitButton = document.getElementById('submit-button');
+    const submitLabel = document.getElementById('submit-label');
+    const formStatus = document.getElementById('form-status');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!form.reportValidity() || submitButton.disabled) return;
+      submitButton.disabled = true;
+      submitLabel.textContent = 'Đang gửi...';
+      formStatus.textContent = 'Đang gửi... (mô phỏng)';
+      formStatus.className = 'form-status sending';
+      window.setTimeout(() => {
+        submitLabel.textContent = 'Gửi thành công';
+        formStatus.textContent = 'Gửi thành công (demo)! Chưa có email thực tế nào được gửi.';
+        formStatus.className = 'form-status success';
+        form.reset();
+        submitButton.disabled = false;
+        window.setTimeout(() => { if (submitLabel.textContent === 'Gửi thành công') submitLabel.textContent = 'Gửi tin nhắn'; }, 3000);
+      }, 1100);
+    });
+
+    /* =====================================================
+       7. TỰ ĐỘNG CẬP NHẬT NĂM BẢN QUYỀN
+       ===================================================== */
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
