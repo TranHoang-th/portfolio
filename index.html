@@ -322,7 +322,46 @@
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .js .reveal { opacity: 1; transform: none; }
     }
-  </style>
+  
+/* =====================================================
+   8. NỘI DUNG PORTFOLIO SINH VIÊN + BLOG/CHAT
+   ===================================================== */
+.hero-actions {flex-wrap:wrap}
+.hero .portrait{object-fit:cover;object-position:center}
+.student-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.student-fact{padding:25px;min-height:135px;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:13px}
+.student-fact i{color:var(--primary);font-size:24px}
+.student-fact b{font-size:14px;display:block;line-height:1.5}.student-fact span{font-size:12px;color:var(--muted);display:block;line-height:1.5;margin-top:4px}
+.language-toggle{font-size:12px;font-weight:800}
+.learning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.learning-card{padding:27px;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.learning-card:hover{transform:translateY(-6px);border-color:var(--primary)}
+.learning-symbol{height:49px;width:49px;border-radius:13px;background:var(--surface-soft);color:var(--primary);font-size:23px;display:grid;place-items:center;margin-bottom:18px}
+.learning-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--primary);font-weight:800;margin-bottom:7px}
+.learning-card h3{font-size:18px;line-height:1.4;margin-bottom:12px}.learning-card p{font-size:13px;flex:1}
+.read-btn,.doc-link strong{border:0;padding:0;background:none;color:var(--primary);font-size:13px;font-weight:800;cursor:pointer;text-align:left}
+.read-btn:hover,.doc-link:hover strong{text-decoration:underline}
+.extras-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin-top:45px}
+.newsletter,.youtube-widget{padding:31px;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}
+.newsletter h3,.youtube-widget h3{font-size:21px;margin:9px 0}.newsletter p,.youtube-widget p{font-size:13px;color:var(--muted)}
+.subscribe-form{display:flex;gap:9px;margin-top:20px}.subscribe-form input{width:100%;min-width:0;border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:10px;padding:12px;font:inherit}
+.subscribe-form input:focus{outline:2px solid var(--primary);outline-offset:2px}
+.youtube-widget>i{font-size:32px;color:#f15a5a}.not-connected{display:inline-flex;padding:5px 11px;border:1px solid var(--border);border-radius:40px;background:var(--surface-soft);color:var(--muted);font-size:12px;font-weight:700}
+.small-note{font-size:11px!important}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.study-modal{display:none;position:fixed;inset:0;z-index:150;align-items:center;justify-content:center;padding:20px;background:rgba(9,20,42,.75)}.study-modal.open{display:flex}
+.study-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:18px;padding:33px;width:min(580px,100%);max-height:85vh;overflow:auto;position:relative}
+.study-dialog h2{font-size:24px;margin:4px 34px 19px 0}.study-dialog p{font-size:14px;white-space:pre-line;line-height:1.8}.study-close{position:absolute;top:14px;right:14px}
+.chat-button{position:fixed;right:23px;bottom:23px;width:58px;height:58px;border:0;border-radius:18px;background:var(--primary);color:white;font-size:22px;box-shadow:0 14px 30px rgba(31,56,130,.25);z-index:98}
+.chat-box{position:fixed;right:23px;bottom:92px;display:none;width:min(340px,calc(100vw - 35px));z-index:98;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.17);overflow:hidden}.chat-box.open{display:block}
+.chat-title{padding:14px 17px;background:var(--primary);color:white;display:flex;justify-content:space-between;align-items:center;font-weight:800}.chat-title button{background:none;border:0;color:white;font-size:20px}
+.chat-history{padding:17px;height:245px;overflow:auto;display:flex;flex-direction:column;gap:12px}.chat-bubble{border-radius:13px;padding:9px 12px;font-size:12px;max-width:90%;background:var(--surface-soft);align-self:flex-start;line-height:1.6}.chat-bubble.you{background:var(--primary);color:white;align-self:flex-end}
+.chat-entry{display:flex;gap:7px;padding:11px;border-top:1px solid var(--border)}.chat-entry input{flex:1;min-width:0;border-radius:8px;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:9px}.chat-entry button{border:0;background:var(--primary);border-radius:8px;color:white;padding:0 13px}
+#cv-paper{display:none}
+@media(max-width:1120px){.nav{gap:13px}.nav a{font-size:12px}}
+@media(max-width:900px){.learning-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.learning-grid,.student-facts,.extras-grid{grid-template-columns:1fr}.subscribe-form{flex-direction:column}.subscribe-form .btn{justify-content:center}.chat-box{right:15px;bottom:80px}.chat-button{right:15px;bottom:15px}.language-toggle{width:38px}}
+@media print{body>*:not(#cv-paper){display:none!important}#cv-paper{display:block!important;background:#fff;color:#19243b;font:11pt/1.5 Arial,sans-serif;padding:12mm}#cv-paper h1{font:700 29pt Arial;color:#19243b}#cv-paper h2{font:700 15pt Arial;border-bottom:1px solid #ddd;margin:20px 0 9px;color:#19243b}#cv-paper p,#cv-paper li{color:#19243b}@page{size:A4;margin:12mm}}
+</style>
 </head>
 <body>
   <!-- =====================================================
@@ -334,14 +373,16 @@
         <span class="brand-mark">TH</span><span>Trần Hoàng<span class="brand-dot">.</span></span>
       </a>
       <nav class="nav" id="main-nav" aria-label="Điều hướng chính">
-        <a href="#trang-chu" class="active">Trang chủ</a>
-        <a href="#ve-toi">Về tôi</a>
-        <a href="#ky-nang">Kỹ năng</a>
-        <a href="#du-an">Dự án</a>
-        <a href="#dich-vu">Dịch vụ</a>
-        <a href="#lien-he">Liên hệ</a>
-      </nav>
+<a class="active" href="#trang-chu">Trang chủ</a>
+<a href="#ky-nang">Kỹ năng</a>
+<a href="#du-an">Dự án</a>
+<a href="#ve-toi">Về tôi</a>
+<a href="#lien-he">Liên hệ</a>
+<a href="#bai-viet">Bài viết</a>
+<a href="#tai-lieu">Tài liệu</a>
+</nav>
       <div class="header-actions">
+<button type="button" class="icon-btn language-toggle" id="lang-toggle" title="Tiếng Việt / English" aria-label="Switch language">EN</button>
         <button class="icon-btn" id="theme-toggle" type="button" aria-label="Bật chế độ tối" aria-pressed="false" title="Chuyển chế độ sáng/tối"><i class="fa-solid fa-moon" aria-hidden="true"></i></button>
         <button class="icon-btn" id="menu-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="main-nav"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
       </div>
@@ -354,50 +395,30 @@
       <div class="container hero-grid">
         <div class="portrait-wrap">
           <div class="portrait-ring">
-            <img class="portrait" src="https://placehold.co/700x700/dde8f7/274b92?text=Tran+Hoang" alt="Ảnh đại diện mẫu của Trần Hoàng, thay bằng ảnh cá nhân" width="700" height="700" fetchpriority="high">
+            <img class="portrait" src="https://avatars.githubusercontent.com/u/233237842?v=4&amp;size=720" alt="Ảnh đại diện GitHub của Trần Hoàng" width="700" height="700" fetchpriority="high">
           </div>
           <div class="floating-pill pill-code"><i class="fa-solid fa-code" aria-hidden="true"></i><span>Passion for<br>Technology</span></div>
           <div class="floating-pill pill-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Cần Thơ,<br>Việt Nam</span></div>
         </div>
         <div class="hero-content">
-          <span class="status-line"><span class="dot"></span>Sẵn sàng học hỏi &amp; hợp tác</span>
+          <span class="status-line"><span class="dot"></span>Sinh viên năm 3 · Sẵn sàng học hỏi</span>
           <h1 id="hero-title">Xin chào, tôi là<br><span class="accent">Trần Hoàng</span></h1>
           <p class="hero-role">Information Technology Student</p>
-          <p class="hero-desc">Biến ý tưởng thành sản phẩm số chuyên nghiệp. Tôi yêu thích việc tạo ra những giải pháp công nghệ hữu ích, trực quan và dễ sử dụng.</p>
+          <p class="hero-desc">Biến ý tưởng thành sản phẩm số chuyên nghiệp. Mình là sinh viên năm 3 ngành Công nghệ Thông tin tại Đại học FPT Cần Thơ, yêu thích lập trình và xây dựng ứng dụng hữu ích.</p>
           <div class="hero-actions">
+<button id="cv-download" class="btn btn-outline" type="button"><i class="fa-solid fa-file-pdf"></i> Tải CV (PDF)</button>
             <a href="#du-an" class="btn btn-primary">Xem dự án <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             <a href="#lien-he" class="btn btn-outline">Liên hệ ngay <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
           </div>
-          <div class="hero-social"><span>Kết nối với tôi</span>
+          <div class="hero-social">
+<a href="https://github.com/TranHoang-th" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub của Trần Hoàng"><i class="fa-brands fa-github"></i></a><span>Kết nối với tôi</span>
             <a class="social-link" href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Trần Hoàng"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
             <a class="social-link" href="mailto:trnhoang1107@gmail.com" aria-label="Gửi email cho Trần Hoàng"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- ABOUT ME: Chỉnh nội dung giới thiệu và data-target của các con số -->
-    <section class="section section-muted" id="ve-toi" aria-labelledby="about-title">
-      <div class="container about-layout">
-        <div class="about-copy reveal">
-          <span class="eyebrow">Đôi nét về bản thân</span>
-          <h2 id="about-title">Về <span class="accent">tôi</span></h2>
-          <p>Tôi là <strong>Trần Hoàng</strong>, sinh viên năm 3 ngành Công nghệ Thông tin tại <strong>Đại học FPT Cần Thơ</strong>, với niềm yêu thích lập trình và phát triển phần mềm.</p>
-          <p>Trong quá trình học tập, tôi tập trung xây dựng nền tảng về lập trình hướng đối tượng, phát triển giao diện, cơ sở dữ liệu và quy trình làm việc nhóm.</p>
-          <p>Tôi luôn chủ động khám phá công nghệ mới, trau dồi kỹ năng qua các bài tập và dự án thực hành, hướng tới những sản phẩm dễ sử dụng và giải quyết được vấn đề thực tế.</p>
-          <div class="about-note"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><span>“Học hỏi mỗi ngày, cải thiện từng dòng code và luôn đặt trải nghiệm người dùng lên hàng đầu.”</span></div>
-        </div>
-        <div class="stats-grid reveal" aria-label="Số liệu minh họa">
-          <div class="stat-card"><span class="stat-icon"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span><span class="stat-value" data-target="1" data-suffix="+">0</span><span class="stat-label">Năm kinh nghiệm</span></div>
-          <div class="stat-card"><span class="stat-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></span><span class="stat-value" data-target="6" data-suffix="+">0</span><span class="stat-label">Số dự án đã làm</span></div>
-          <div class="stat-card"><span class="stat-icon"><i class="fa-solid fa-face-smile" aria-hidden="true"></i></span><span class="stat-value" data-target="3" data-suffix="+">0</span><span class="stat-label">Khách hàng hài lòng</span></div>
-          <p class="stats-footnote">* Các con số trên là dữ liệu mẫu; hãy cập nhật theo thành tích thực tế.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS: 6 kỹ năng đề xuất cho sinh viên CNTT -->
-    <section class="section" id="ky-nang" aria-labelledby="skills-title">
+<section class="section" id="ky-nang" aria-labelledby="skills-title">
       <div class="container">
         <div class="section-head reveal"><span class="eyebrow">Năng lực của tôi</span><h2 id="skills-title">Kỹ năng <span class="accent">chuyên môn</span></h2><p>Những công nghệ và tư duy kỹ thuật tôi đang học tập, thực hành và phát triển mỗi ngày.</p></div>
         <div class="skills-grid">
@@ -410,11 +431,9 @@
         </div>
       </div>
     </section>
-
-    <!-- PROJECTS: 6 dự án MẪU, chỉnh tên/ảnh/mô tả và dữ liệu chi tiết ở script -->
-    <section class="section section-muted" id="du-an" aria-labelledby="projects-title">
+<section class="section section-muted" id="du-an" aria-labelledby="projects-title">
       <div class="container">
-        <div class="section-head reveal"><span class="eyebrow">Sản phẩm thực hành</span><h2 id="projects-title">Dự án <span class="accent">nổi bật</span></h2><p>Một số ví dụ phù hợp với định hướng CNTT của tôi. Đây là nội dung minh họa, cần cập nhật theo dự án thực tế trước khi xuất bản chính thức.</p></div>
+        <div class="section-head reveal"><span class="eyebrow">Sản phẩm thực hành</span><h2 id="projects-title">Dự án <span class="accent">nổi bật</span></h2><p>Bài tập và đồ án trong quá trình học CNTT. Hình minh hoạ sẽ được thay bằng ảnh chụp ứng dụng và đường dẫn mã nguồn khi hoàn thiện.</p></div>
         <div class="projects-grid">
           <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/dbe8f7/274b92?text=Cinema+Management" alt="Ảnh minh họa dự án quản lý rạp chiếu phim" width="960" height="600"><span class="image-chip">Web App</span></div><div class="project-body"><h3>Hệ thống quản lý rạp phim</h3><p>Quản lý phim, suất chiếu và thông tin đặt vé trên nền tảng web.</p><div class="tags"><span class="tag">Java</span><span class="tag">JSP</span><span class="tag">SQL</span></div><button class="detail-btn" type="button" data-project="cinema">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
           <article class="project-card reveal"><div class="project-image"><img loading="lazy" src="https://placehold.co/960x600/efe4f7/65488b?text=Student+Management" alt="Ảnh minh họa ứng dụng quản lý sinh viên" width="960" height="600"><span class="image-chip">Desktop</span></div><div class="project-body"><h3>Quản lý sinh viên WPF</h3><p>Ứng dụng desktop hỗ trợ thêm, sửa, xóa và tìm kiếm sinh viên.</p><div class="tags"><span class="tag">C#</span><span class="tag">WPF</span><span class="tag">MVVM</span></div><button class="detail-btn" type="button" data-project="student">Xem chi tiết <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div></article>
@@ -425,22 +444,20 @@
         </div>
       </div>
     </section>
-
-    <!-- SERVICES: Giá chỉ tham khảo, sửa theo dịch vụ thực tế -->
-    <section class="section" id="dich-vu" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-head reveal"><span class="eyebrow">Có thể hỗ trợ</span><h2 id="services-title">Dịch vụ tôi <span class="accent">cung cấp</span></h2><p>Các gói minh họa dành cho dự án nhỏ và cá nhân. Phạm vi công việc, chi phí sẽ được trao đổi cụ thể trước khi thực hiện.</p></div>
-        <div class="services-grid">
-          <article class="service-card reveal"><i class="service-icon fa-solid fa-file-code" aria-hidden="true"></i><h3>Trang web cơ bản</h3><div class="service-price">1.500.000đ</div><p class="service-desc">Một trang giới thiệu đơn giản, gọn gàng.</p><ul><li><i class="fa-solid fa-check" aria-hidden="true"></i>1 trang web giới thiệu</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Responsive mọi thiết bị</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Giao diện theo màu thương hiệu</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Form liên hệ giao diện</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>1 lần chỉnh sửa giao diện</li></ul><a href="#lien-he" class="btn btn-outline service-cta" data-service="Trang web cơ bản">Chọn gói này <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
-          <article class="service-card featured reveal"><span class="popular"><i class="fa-solid fa-star" aria-hidden="true"></i> Phổ biến</span><i class="service-icon fa-solid fa-laptop-code" aria-hidden="true"></i><h3>Portfolio / Landing Page</h3><div class="service-price">3.000.000đ</div><p class="service-desc">Giao diện chỉn chu, nhiều khu vực nội dung.</p><ul><li><i class="fa-solid fa-check" aria-hidden="true"></i>Thiết kế giao diện cá nhân hóa</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Hiệu ứng mượt mà</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Tối ưu trải nghiệm mobile</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Tối ưu SEO cơ bản</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>2 lần chỉnh sửa giao diện</li></ul><a href="#lien-he" class="btn btn-primary service-cta" data-service="Portfolio / Landing Page">Chọn gói này <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
-          <article class="service-card reveal"><i class="service-icon fa-solid fa-gears" aria-hidden="true"></i><h3>Giao diện theo yêu cầu</h3><div class="service-price">Liên hệ</div><p class="service-desc">Trao đổi giải pháp phù hợp với ý tưởng của bạn.</p><ul><li><i class="fa-solid fa-check" aria-hidden="true"></i>Phân tích nhu cầu ban đầu</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Tùy chỉnh bố cục &amp; chức năng</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Hỗ trợ giao diện đa thiết bị</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Thống nhất tiến độ thực hiện</li><li><i class="fa-solid fa-check" aria-hidden="true"></i>Hỗ trợ bàn giao mã nguồn</li></ul><a href="#lien-he" class="btn btn-outline service-cta" data-service="Giao diện theo yêu cầu">Trao đổi ngay <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
-        </div>
-        <p class="price-note">* Giá và tính năng chỉ mang tính minh họa, chưa phải báo giá chính thức.</p>
-      </div>
-    </section>
-
-    <!-- CONTACT: Form chỉ mô phỏng gửi, KHÔNG lưu hay gửi thông tin lên máy chủ -->
-    <section class="section section-muted" id="lien-he" aria-labelledby="contact-title">
+<section class="section" id="ve-toi" aria-labelledby="about-title">
+<div class="container about-layout">
+ <div class="about-copy reveal"><span class="eyebrow">Hành trình học tập</span><h2 id="about-title">Về <span class="accent">tôi</span></h2>
+ <p>Mình là <strong>Trần Hoàng</strong>, sinh viên năm 3 ngành <strong>Công nghệ Thông tin tại Đại học FPT Cần Thơ</strong>. Mình yêu thích việc học lập trình và tìm hiểu cách phần mềm được xây dựng trong thực tế.</p>
+ <p>Qua các môn học và dự án nhóm, mình đang rèn luyện kỹ năng <strong>Java, C#, WPF, HTML/CSS/JavaScript, SQL</strong>, kết hợp Git và GitHub trong quản lý mã nguồn.</p>
+ <p>Mục tiêu hiện tại là hoàn thiện portfolio, phát triển sản phẩm có thể demo và tìm kiếm cơ hội <strong>thực tập lập trình</strong>.</p>
+ <div class="about-note"><i aria-hidden="true" class="fa-solid fa-lightbulb"></i><span>“Học hỏi mỗi ngày, cải thiện từng dòng code và từng sản phẩm nhỏ.”</span></div></div>
+ <div class="student-facts reveal" aria-label="Thông tin sinh viên">
+ <div class="student-fact"><i class="fa-solid fa-user-graduate"></i><div><b>Sinh viên năm 3</b><span>FPT University Cần Thơ</span></div></div>
+ <div class="student-fact"><i class="fa-solid fa-laptop-code"></i><div><b>Đang phát triển kỹ năng</b><span>Java · C# · Web</span></div></div>
+ <div class="student-fact"><i class="fa-solid fa-people-group"></i><div><b>Academic projects</b><span>Đồ án môn học và dự án nhóm</span></div></div>
+ <div class="student-fact"><i class="fa-solid fa-rocket"></i><div><b>Mục tiêu</b><span>Ứng tuyển thực tập sinh CNTT</span></div></div>
+ </div></div></section>
+<section class="section section-muted" id="lien-he" aria-labelledby="contact-title">
       <div class="container">
         <div class="section-head reveal"><span class="eyebrow">Kết nối &amp; hợp tác</span><h2 id="contact-title">Liên hệ <span class="accent">với tôi</span></h2><p>Bạn có ý tưởng, câu hỏi hoặc cơ hội hợp tác? Hãy kết nối để chúng ta cùng trao đổi.</p></div>
         <div class="contact-grid">
@@ -454,18 +471,37 @@
             </div>
           </div>
           <form class="contact-form reveal" id="contact-form" autocomplete="on">
-            <h3>Gửi lời nhắn</h3><p>Điền thông tin bên dưới để trải nghiệm form liên hệ demo.</p>
+            <h3>Gửi lời nhắn</h3><p>Điền thông tin và bấm gửi để mở ứng dụng email của bạn.</p>
             <div class="form-grid">
               <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="fullName" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
               <div class="field"><label for="email">Email <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="email@example.com" autocomplete="email" maxlength="150" required></div>
               <div class="field full"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" maxlength="25"></div>
               <div class="field full"><label for="message">Nội dung <span class="accent">*</span></label><textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" minlength="10" maxlength="2000" required></textarea></div>
             </div>
-            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">Đây là form mô phỏng; không có email nào được gửi đi.</span></div>
+            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Soạn email gửi</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">Hệ thống mở ứng dụng email; bạn cần bấm Gửi trong ứng dụng để hoàn tất.</span></div>
           </form>
         </div>
       </div>
     </section>
+<!-- SECTION BỔ SUNG: Blog/technical articles và tài liệu học tập -->
+<section id="bai-viet" class="section section-muted" aria-labelledby="blog-title">
+ <div class="container"><div class="section-head reveal"><span class="eyebrow">Góc học tập</span><h2 id="blog-title">Blogs / <span class="accent">Technical articles</span></h2><p>Những ghi chép kỹ thuật ngắn từ các chủ đề mình đang học. Có thể bổ sung bài viết mới trong tương lai.</p></div>
+ <div class="learning-grid">
+  <article class="learning-card reveal"><span class="learning-symbol"><i class="fa-brands fa-java"></i></span><span class="learning-label">Java</span><h3>OOP: 4 nguyên lý cơ bản</h3><p>Đóng gói, kế thừa, đa hình và trừu tượng trong Java.</p><button class="read-btn" type="button" data-article="oop">Đọc ghi chú <i class="fa-solid fa-arrow-right"></i></button></article>
+  <article class="learning-card reveal"><span class="learning-symbol"><i class="fa-brands fa-microsoft"></i></span><span class="learning-label">WPF</span><h3>MVVM &amp; Data Binding</h3><p>Tách View, Model, ViewModel khi xây dựng ứng dụng WPF.</p><button class="read-btn" type="button" data-article="mvvm">Đọc ghi chú <i class="fa-solid fa-arrow-right"></i></button></article>
+  <article class="learning-card reveal"><span class="learning-symbol"><i class="fa-brands fa-git-alt"></i></span><span class="learning-label">Git/GitHub</span><h3>Git workflow cơ bản</h3><p>Branch, commit, pull, push khi làm việc với dự án nhóm.</p><button class="read-btn" type="button" data-article="git">Đọc ghi chú <i class="fa-solid fa-arrow-right"></i></button></article>
+ </div></div></section>
+<section class="section" id="tai-lieu" aria-labelledby="docs-title">
+ <div class="container"><div class="section-head reveal"><span class="eyebrow">Tự học</span><h2 id="docs-title">Technical <span class="accent">docs</span></h2><p>Liên kết tới tài liệu đáng tin cậy để tra cứu kiến thức và học tập.</p></div>
+ <div class="learning-grid">
+  <a class="learning-card doc-link reveal" href="https://docs.oracle.com/en/java/" target="_blank" rel="noopener noreferrer"><span class="learning-symbol"><i class="fa-brands fa-java"></i></span><h3>Java Documentation</h3><p>Tài liệu Java chính thức của Oracle.</p><strong>Xem tài liệu <i class="fa-solid fa-arrow-up-right-from-square"></i></strong></a>
+  <a class="learning-card doc-link reveal" href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/" target="_blank" rel="noopener noreferrer"><span class="learning-symbol"><i class="fa-brands fa-microsoft"></i></span><h3>Microsoft WPF Docs</h3><p>Kiến thức WPF, XAML và Data Binding.</p><strong>Xem tài liệu <i class="fa-solid fa-arrow-up-right-from-square"></i></strong></a>
+  <a class="learning-card doc-link reveal" href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noopener noreferrer"><span class="learning-symbol"><i class="fa-brands fa-html5"></i></span><h3>MDN Web Docs</h3><p>HTML, CSS, JavaScript và nền tảng web.</p><strong>Xem tài liệu <i class="fa-solid fa-arrow-up-right-from-square"></i></strong></a>
+ </div>
+ <div class="extras-grid">
+  <div class="newsletter reveal"><span class="eyebrow">Subscribe by email</span><h3>Nhận cập nhật bài viết</h3><p>Đăng ký theo dõi bằng cách soạn email trực tiếp. Chưa có hệ thống lưu danh sách tự động.</p><form id="subscribe-form" class="subscribe-form"><label for="subscriber-email" class="visually-hidden">Email đăng ký</label><input type="email" id="subscriber-email" required placeholder="you@example.com"><button class="btn btn-primary" type="submit">Đăng ký</button></form><p id="subscribe-status" class="small-note" aria-live="polite"></p></div>
+  <div class="youtube-widget reveal"><i class="fa-brands fa-youtube"></i><h3>YouTube subscribers</h3><span class="not-connected">Chưa kết nối kênh</span><p>Không hiển thị subscriber giả. Khi có kênh YouTube và API, số lượng thực tế có thể được tích hợp.</p></div>
+ </div></div></section>
   </main>
 
   <!-- FOOTER: Năm bản quyền được JavaScript tự cập nhật -->
@@ -652,29 +688,19 @@
       });
     });
 
-    /* =====================================================
-       6. FORM DEMO: Không gửi dữ liệu thật, chỉ đổi trạng thái
-       Nếu muốn form hoạt động thật: kết nối backend/API ở đây.
-       ===================================================== */
+    /* 6. FORM LIÊN HỆ - dùng mailto thay vì thông báo gửi thành công giả */
     const form = document.getElementById('contact-form');
-    const submitButton = document.getElementById('submit-button');
-    const submitLabel = document.getElementById('submit-label');
-    const formStatus = document.getElementById('form-status');
     form.addEventListener('submit', event => {
       event.preventDefault();
-      if (!form.reportValidity() || submitButton.disabled) return;
-      submitButton.disabled = true;
-      submitLabel.textContent = 'Đang gửi...';
-      formStatus.textContent = 'Đang gửi... (mô phỏng)';
-      formStatus.className = 'form-status sending';
-      window.setTimeout(() => {
-        submitLabel.textContent = 'Gửi thành công';
-        formStatus.textContent = 'Gửi thành công (demo)! Chưa có email thực tế nào được gửi.';
-        formStatus.className = 'form-status success';
-        form.reset();
-        submitButton.disabled = false;
-        window.setTimeout(() => { if (submitLabel.textContent === 'Gửi thành công') submitLabel.textContent = 'Gửi tin nhắn'; }, 3000);
-      }, 1100);
+      if (!form.reportValidity()) return;
+      const name = document.getElementById('full-name').value.trim();
+      const mail = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Liên hệ Portfolio - ' + name);
+      const body = encodeURIComponent('Họ tên: ' + name + '\nEmail: ' + mail + '\nĐiện thoại: ' + phone + '\n\nNội dung:\n' + message);
+      document.getElementById('form-status').textContent = 'Ứng dụng email sẽ mở; hãy bấm Gửi tại đó.';
+      window.location.href = 'mailto:trnhoang1107@gmail.com?subject=' + subject + '&body=' + body;
     });
 
     /* =====================================================
@@ -682,5 +708,71 @@
        ===================================================== */
     document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
-</body>
+<div id="study-modal" class="study-modal" role="dialog" aria-modal="true" aria-labelledby="study-modal-title"><div class="study-dialog"><button class="icon-btn study-close" type="button" id="study-close" aria-label="Đóng ghi chú"><i class="fa-solid fa-xmark"></i></button><span class="eyebrow">Ghi chú kỹ thuật</span><h2 id="study-modal-title"></h2><p id="study-modal-text"></p></div></div>
+<button id="chat-button" class="chat-button" type="button" aria-label="Mở trợ lý FAQ" aria-expanded="false" aria-controls="chat-box"><i class="fa-solid fa-comments"></i></button>
+<aside class="chat-box" id="chat-box" aria-label="Trợ lý tự động"><div class="chat-title">Trợ lý Portfolio (demo)<button id="chat-close" type="button" aria-label="Đóng chat">×</button></div><div class="chat-history" id="chat-history" aria-live="polite"><div class="chat-bubble">Xin chào! Đây là trợ lý trả lời FAQ tự động, không phải chat trực tiếp. Hãy hỏi về kỹ năng, dự án hoặc liên hệ của Hoàng.</div></div><form class="chat-entry" id="chat-form"><label class="visually-hidden" for="chat-question">Câu hỏi</label><input id="chat-question" required maxlength="300" placeholder="Hỏi về kỹ năng, dự án..."><button type="submit" aria-label="Gửi câu hỏi"><i class="fa-solid fa-arrow-up"></i></button></form></aside>
+<div id="cv-paper"><h1>TRẦN HOÀNG</h1><p><strong>Information Technology Student</strong> — FPT University, Cần Thơ</p><p>Cần Thơ, Việt Nam · 0974 736 573 · trnhoang1107@gmail.com</p><p>GitHub: github.com/TranHoang-th</p><h2>GIỚI THIỆU</h2><p>Sinh viên năm 3 ngành Công nghệ Thông tin tại Đại học FPT Cần Thơ, quan tâm phát triển ứng dụng và giao diện phần mềm. Mong muốn nâng cao kỹ năng qua dự án thực tế và cơ hội thực tập.</p><h2>HỌC VẤN</h2><p>FPT University Cần Thơ · Information Technology · Sinh viên năm 3</p><h2>KỸ NĂNG</h2><p>Java/OOP, C#, WPF/MVVM, HTML, CSS, JavaScript, SQL, Git/GitHub, UI Responsive.</p><h2>DỰ ÁN HỌC TẬP</h2><ul><li><strong>F-Cinema:</strong> Quản lý phim và suất chiếu trong dự án nhóm.</li><li><strong>Student Management WPF:</strong> C# và WPF, chức năng CRUD/tìm kiếm.</li><li><strong>Badminton Court Management:</strong> Java OOP, Collections, File I/O.</li><li><strong>Portfolio cá nhân:</strong> HTML, CSS và JavaScript thuần.</li></ul><h2>MỤC TIÊU</h2><p>Trau dồi kỹ năng lập trình, phát triển dự án có thể demo và hướng tới cơ hội thực tập sinh CNTT.</p><p style="font-size:10pt;margin-top:25px">CV mẫu tạo tự động. Vui lòng kiểm tra lại trước khi gửi nhà tuyển dụng.</p></div>
+<script>
+/* Các tính năng bổ sung: song ngữ, in CV, blog, FAQ, subscribe qua email */
+(function(){'use strict';
+const list=[
+ ['#main-nav a',['Home','Skills','Projects','About','Contact','Writing','Docs']],
+ ['.hero .status-line',['Third-year IT student · Always learning']],
+ ['.hero .hero-desc',["I'm a third-year Information Technology student at FPT University, Can Tho. I enjoy programming and building useful applications through coursework and team projects."]],
+ ['#cv-download',['Download CV (PDF)']],
+ ['#skills-title',['Skills in progress']],['#projects-title',['Academic projects']],['#about-title',['About me']],['#contact-title',['Contact me']],['#blog-title',['Technical articles']],['#docs-title',['Technical docs']],
+ ['#bai-viet .section-head p',['Short technical notes from topics I have studied. New posts can be added later.']],
+ ['#tai-lieu .section-head p',['Official learning references and trusted technical documentation.']],
+ ['.learning-card .read-btn',['Read note','Read note','Read note']],
+ ['.newsletter h3',['Follow future posts']],['.newsletter>p',['Send a subscription request via email. There is no automated mailing list yet.']],
+ ['#subscribe-form button',['Subscribe']],['.youtube-widget .not-connected',['Not connected']],
+ ['.youtube-widget p',['No fake subscriber counts. A real count can be displayed when a channel and API are connected.']],
+ ['.contact-form h3',['Send a message']],['#submit-label',['Compose email']],
+ ['.contact-form .hint',['This opens your email app; press Send there to complete.']]
+];
+/* Phần dịch bổ sung cho Skills, Projects, About, Contact và Blog. */
+list.push(
+ ['.skills-grid .skill-card h3',['Java & OOP','HTML, CSS & JavaScript','C# & WPF','SQL & Databases','Git & GitHub','UI/UX & Responsive Design']],
+ ['.skills-grid .skill-card p',['Object-oriented programming, data structures and logic.','Responsive web interfaces and basic interactions.','Desktop applications using WPF and MVVM.','Relational table design, queries and data management.','Version control, branching and teamwork.','Clear interfaces that work across screen sizes.']],
+ ['#ky-nang .section-head>p',['Technologies I am learning and practicing through coursework and team projects.']],
+ ['.projects-grid .project-card h3',['Cinema Management System','Student Management in WPF','Badminton Court Management','Personal Portfolio Website','Study Planner Concept','Bubble Sort Practice']],
+ ['.projects-grid .project-card p',['Managing movies, showtimes and booking information in an academic web project.','A desktop app with student create, edit, delete and search operations.','Manage courts, customers and bookings with object-oriented Java.','A responsive, single-page website introducing my work and skills.','A sample study scheduling interface; this is only a concept.','An algorithm exercise for sorting arrays and validating input.']],
+ ['#du-an .section-head>p',['Coursework and academic projects. Placeholder images can be replaced with real screenshots and repository links.']],
+ ['.detail-btn',['View details','View details','View details','View details','View details','View details']],
+ ['#ve-toi .about-copy>p',["I'm Tran Hoang, a third-year Information Technology student at FPT University, Can Tho. I enjoy studying programming and learning how software is built in practice.","Through coursework and team projects, I'm developing skills in Java, C#, WPF, HTML/CSS/JavaScript, SQL and Git/GitHub.","My current goal is to improve my portfolio, build demonstrable projects and pursue a software development internship."]],
+ ['.student-fact b',['Third-year student','Developing skills','Academic projects','Career goal']],
+ ['.student-fact span',['FPT University, Can Tho','Java · C# · Web','Coursework and team projects','Software development internship']],
+ ['#lien-he .section-head>p',["Have a question, a team project or an internship opportunity? I'd be happy to connect."]],
+ ['#lien-he .contact-intro h3',["Let's get in touch!"]],
+ ['#lien-he .contact-intro>p',['You can contact me by email, phone or Facebook. I will respond when possible.']],
+ ['#lien-he .contact-list small',['Email','Phone number','Location','Social media']],
+ ['#lien-he .contact-form>p',['Fill in the form to open a draft in your email application.']],
+ ['#lien-he .field label',['Full name *','Email *','Phone number','Message *']],
+ ['#bai-viet .learning-card h3',['OOP: Four Core Principles','MVVM & Data Binding','Basic Git Workflow']],
+ ['#bai-viet .learning-card p',['Encapsulation, inheritance, polymorphism and abstraction in Java.','Separating Model, View and ViewModel in WPF applications.','Branches, commits, pull and push in team projects.']],
+ ['#tai-lieu .learning-card p',['Official Java documentation by Oracle.','WPF, XAML and data binding documentation by Microsoft.','HTML, CSS, JavaScript and the web platform.']],
+ ['#tai-lieu .doc-link strong',['Open docs','Open docs','Open docs']]
+);
+const translations=[];
+list.forEach(([selector,values])=>[...document.querySelectorAll(selector)].forEach((el,i)=>{if(values[i])translations.push({el,html:el.innerHTML,en:values[i]});}));
+let language='vi';const langBtn=document.getElementById('lang-toggle');
+function changeLanguage(){language=language==='vi'?'en':'vi';translations.forEach(x=>{if(language==='vi')x.el.innerHTML=x.html;else x.el.textContent=x.en});langBtn.textContent=language==='vi'?'EN':'VI';document.documentElement.lang=language;try{localStorage.setItem('portfolio-language',language)}catch(e){}}
+langBtn.addEventListener('click',changeLanguage);try{if(localStorage.getItem('portfolio-language')==='en')changeLanguage()}catch(e){}
+document.getElementById('cv-download').addEventListener('click',()=>window.print());
+const articles={
+ oop:{title:'OOP - 4 nguyên lý cơ bản',content:'Encapsulation (đóng gói): bảo vệ trạng thái đối tượng, sử dụng private và getter/setter khi cần.\n\nInheritance (kế thừa): lớp con sử dụng và mở rộng lớp cha.\n\nPolymorphism (đa hình): cùng lời gọi phương thức nhưng đối tượng xử lý khác nhau, ví dụ override.\n\nAbstraction (trừu tượng): biểu diễn hành vi chính và che giấu chi tiết.\n\nVí dụ: Employee và Manager trong Java.'},
+ mvvm:{title:'MVVM và Data Binding trong WPF',content:'Model: dữ liệu và nghiệp vụ.\n\nView: giao diện viết bằng XAML.\n\nViewModel: xử lý dữ liệu và thao tác cho View.\n\nBinding giúp TextBox và DataGrid tự đồng bộ dữ liệu. RelayCommand dùng để xử lý nút bấm theo MVVM.\n\nVí dụ: Student Management WPF với Add, Update, Delete và Search.'},
+ git:{title:'Git workflow cơ bản',content:'1. git clone - sao chép mã nguồn.\n2. git pull - cập nhật thay đổi mới.\n3. git checkout -b - tạo branch mới.\n4. git status, git add, git commit - lưu thay đổi.\n5. git push - đẩy code lên GitHub.\n6. Kiểm tra diff và giải quyết conflict khi làm nhóm.\n\nHãy kiểm tra các file thay đổi trước khi commit.'}
+};
+const modal=document.getElementById('study-modal');let lastFocus=null;
+document.querySelectorAll('[data-article]').forEach(btn=>btn.addEventListener('click',()=>{const a=articles[btn.dataset.article];if(!a)return;lastFocus=document.activeElement;document.getElementById('study-modal-title').textContent=a.title;document.getElementById('study-modal-text').textContent=a.content;modal.classList.add('open');document.getElementById('study-close').focus()}));
+function closeModal(){modal.classList.remove('open');lastFocus?.focus()};
+document.getElementById('study-close').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.getElementById('subscribe-form').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('subscriber-email');if(!input.checkValidity())return;const subject=encodeURIComponent('Đăng ký theo dõi bài viết');const body=encodeURIComponent('Xin chào Hoàng, mình muốn theo dõi bài viết qua email '+input.value.trim());document.getElementById('subscribe-status').textContent='Ứng dụng email sẽ mở; hãy nhấn Gửi để đăng ký.';window.location.href='mailto:trnhoang1107@gmail.com?subject='+subject+'&body='+body});
+const chat=document.getElementById('chat-box'),chatBtn=document.getElementById('chat-button');
+function toggleChat(value){chat.classList.toggle('open',value);chatBtn.setAttribute('aria-expanded',String(value));if(value)document.getElementById('chat-question').focus()}
+chatBtn.addEventListener('click',()=>toggleChat(!chat.classList.contains('open')));document.getElementById('chat-close').addEventListener('click',()=>toggleChat(false));
+document.getElementById('chat-form').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chat-question'),msg=input.value.trim();if(!msg)return;const log=document.getElementById('chat-history');function say(t,kind){const b=document.createElement('div');b.className='chat-bubble '+kind;b.textContent=t;log.appendChild(b);log.scrollTop=log.scrollHeight};say(msg,'you');input.value='';const text=msg.toLowerCase();let reply=/skill|kỹ năng|hoc|học|công nghệ/.test(text)?'Hoàng đang học Java, C#, WPF, HTML/CSS/JavaScript, SQL và Git/GitHub. Xem mục Kỹ năng.':/project|dự án|đồ án|bài tập/.test(text)?'Một số dự án học tập: quản lý rạp phim, sinh viên WPF, sân cầu lông và Bubble Sort. Xem mục Dự án.':/email|facebook|liên hệ|số điện thoại|contact|phone/.test(text)?'Liên hệ Hoàng qua trnhoang1107@gmail.com hoặc Facebook trong mục Liên hệ.':'Đây là trợ lý demo, không phải chat trực tiếp. Mình chỉ trả lời câu hỏi về kỹ năng, dự án và liên hệ. Bạn có thể gửi email cho Hoàng.';say(reply,'bot')});
+})();
+</script></body>
 </html>
