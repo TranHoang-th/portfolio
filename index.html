@@ -219,7 +219,10 @@
     .field textarea { resize: vertical; min-height: 122px; }
     .form-footer { margin-top: 22px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
     .form-status { min-height: 23px; margin: 0; font-size: .83rem; font-weight: 700; }
-    .form-status.success { color: #22996d; }
+    .form-status.success { color: #16845d; }
+    .form-status.error { color: #cb4b4b; }
+    .honeypot { position: absolute; left: -99999px; width: 1px; height: 1px; overflow: hidden; }
+    #submit-button:disabled { cursor: wait; opacity: .65; }
     .form-status.sending { color: var(--primary); }
 
     /* =====================================================
@@ -341,14 +344,7 @@
 .learning-card h3{font-size:18px;line-height:1.4;margin-bottom:12px}.learning-card p{font-size:13px;flex:1}
 .read-btn,.doc-link strong{border:0;padding:0;background:none;color:var(--primary);font-size:13px;font-weight:800;cursor:pointer;text-align:left}
 .read-btn:hover,.doc-link:hover strong{text-decoration:underline}
-.extras-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin-top:45px}
-.newsletter,.youtube-widget{padding:31px;background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}
-.newsletter h3,.youtube-widget h3{font-size:21px;margin:9px 0}.newsletter p,.youtube-widget p{font-size:13px;color:var(--muted)}
-.subscribe-form{display:flex;gap:9px;margin-top:20px}.subscribe-form input{width:100%;min-width:0;border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:10px;padding:12px;font:inherit}
-.subscribe-form input:focus{outline:2px solid var(--primary);outline-offset:2px}
-.youtube-widget>i{font-size:32px;color:#f15a5a}.not-connected{display:inline-flex;padding:5px 11px;border:1px solid var(--border);border-radius:40px;background:var(--surface-soft);color:var(--muted);font-size:12px;font-weight:700}
-.small-note{font-size:11px!important}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-.study-modal{display:none;position:fixed;inset:0;z-index:150;align-items:center;justify-content:center;padding:20px;background:rgba(9,20,42,.75)}.study-modal.open{display:flex}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.study-modal{display:none;position:fixed;inset:0;z-index:150;align-items:center;justify-content:center;padding:20px;background:rgba(9,20,42,.75)}.study-modal.open{display:flex}
 .study-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:18px;padding:33px;width:min(580px,100%);max-height:85vh;overflow:auto;position:relative}
 .study-dialog h2{font-size:24px;margin:4px 34px 19px 0}.study-dialog p{font-size:14px;white-space:pre-line;line-height:1.8}.study-close{position:absolute;top:14px;right:14px}
 .chat-button{position:fixed;right:23px;bottom:23px;width:58px;height:58px;border:0;border-radius:18px;background:var(--primary);color:white;font-size:22px;box-shadow:0 14px 30px rgba(31,56,130,.25);z-index:98}
@@ -359,8 +355,11 @@
 #cv-paper{display:none}
 @media(max-width:1120px){.nav{gap:13px}.nav a{font-size:12px}}
 @media(max-width:900px){.learning-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.learning-grid,.student-facts,.extras-grid{grid-template-columns:1fr}.subscribe-form{flex-direction:column}.subscribe-form .btn{justify-content:center}.chat-box{right:15px;bottom:80px}.chat-button{right:15px;bottom:15px}.language-toggle{width:38px}}
-@media print{body>*:not(#cv-paper){display:none!important}#cv-paper{display:block!important;background:#fff;color:#19243b;font:11pt/1.5 Arial,sans-serif;padding:12mm}#cv-paper h1{font:700 29pt Arial;color:#19243b}#cv-paper h2{font:700 15pt Arial;border-bottom:1px solid #ddd;margin:20px 0 9px;color:#19243b}#cv-paper p,#cv-paper li{color:#19243b}@page{size:A4;margin:12mm}}
+@media(max-width:700px){.learning-grid,.student-facts,.chat-box{right:15px;bottom:80px}.chat-button{right:15px;bottom:15px}.language-toggle{width:38px}}
+
+/* Nút CV thật trên GitHub Pages: tải xuống hoặc mở PDF trong tab mới. */
+.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+@media(max-width:680px) { .hero-actions .btn { min-width: 0; } }
 </style>
 </head>
 <body>
@@ -406,7 +405,8 @@
           <p class="hero-role">Information Technology Student</p>
           <p class="hero-desc">Biến ý tưởng thành sản phẩm số chuyên nghiệp. Mình là sinh viên năm 3 ngành Công nghệ Thông tin tại Đại học FPT Cần Thơ, yêu thích lập trình và xây dựng ứng dụng hữu ích.</p>
           <div class="hero-actions">
-<button id="cv-download" class="btn btn-outline" type="button"><i class="fa-solid fa-file-pdf"></i> Tải CV (PDF)</button>
+<a id="cv-download" class="btn btn-outline" href="Tran_Hoang_CV.pdf" download="Tran_Hoang_CV.pdf" aria-label="Tải CV Trần Hoàng bản PDF, gồm tiếng Anh và tiếng Việt"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Tải CV (PDF)</a>
+            <a class="btn btn-outline" href="Tran_Hoang_CV.pdf" target="_blank" rel="noopener noreferrer" aria-label="Xem CV Trần Hoàng PDF trong tab mới"><i class="fa-solid fa-eye" aria-hidden="true"></i> Xem CV</a>
             <a href="#du-an" class="btn btn-primary">Xem dự án <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             <a href="#lien-he" class="btn btn-outline">Liên hệ ngay <i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
           </div>
@@ -470,15 +470,21 @@
               <div class="contact-item"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><div><small>Mạng xã hội</small><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer">Facebook / Trần Hoàng <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div>
             </div>
           </div>
-          <form class="contact-form reveal" id="contact-form" autocomplete="on">
-            <h3>Gửi lời nhắn</h3><p>Điền thông tin và bấm gửi để mở ứng dụng email của bạn.</p>
+          <!-- FORM LIÊN HỆ THẬT: FormSubmit xử lý gửi email; kích hoạt địa chỉ nhận ở lần đầu. -->
+          <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/trnhoang1107@gmail.com" method="POST" autocomplete="on">
+            <input type="hidden" name="_subject" value="Liên hệ mới từ Portfolio Trần Hoàng">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_url" value="https://tranhoang-th.github.io/portfolio/">
+            <div class="honeypot" aria-hidden="true"><label for="company-website">Website công ty (để trống)</label><input id="company-website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
+            <h3>Gửi lời nhắn</h3><p>Điền thông tin bên dưới, tin nhắn sẽ được chuyển đến email của mình ngay trên website.</p>
             <div class="form-grid">
-              <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="fullName" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
+              <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="name" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
               <div class="field"><label for="email">Email <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="email@example.com" autocomplete="email" maxlength="150" required></div>
               <div class="field full"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" maxlength="25"></div>
               <div class="field full"><label for="message">Nội dung <span class="accent">*</span></label><textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" minlength="10" maxlength="2000" required></textarea></div>
             </div>
-            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Soạn email gửi</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">Hệ thống mở ứng dụng email; bạn cần bấm Gửi trong ứng dụng để hoàn tất.</span></div>
+            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">Thông tin được gửi qua FormSubmit. Không cần mở ứng dụng email.</span></div>
           </form>
         </div>
       </div>
@@ -498,10 +504,7 @@
   <a class="learning-card doc-link reveal" href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/" target="_blank" rel="noopener noreferrer"><span class="learning-symbol"><i class="fa-brands fa-microsoft"></i></span><h3>Microsoft WPF Docs</h3><p>Kiến thức WPF, XAML và Data Binding.</p><strong>Xem tài liệu <i class="fa-solid fa-arrow-up-right-from-square"></i></strong></a>
   <a class="learning-card doc-link reveal" href="https://developer.mozilla.org/en-US/docs/Web" target="_blank" rel="noopener noreferrer"><span class="learning-symbol"><i class="fa-brands fa-html5"></i></span><h3>MDN Web Docs</h3><p>HTML, CSS, JavaScript và nền tảng web.</p><strong>Xem tài liệu <i class="fa-solid fa-arrow-up-right-from-square"></i></strong></a>
  </div>
- <div class="extras-grid">
-  <div class="newsletter reveal"><span class="eyebrow">Subscribe by email</span><h3>Nhận cập nhật bài viết</h3><p>Đăng ký theo dõi bằng cách soạn email trực tiếp. Chưa có hệ thống lưu danh sách tự động.</p><form id="subscribe-form" class="subscribe-form"><label for="subscriber-email" class="visually-hidden">Email đăng ký</label><input type="email" id="subscriber-email" required placeholder="you@example.com"><button class="btn btn-primary" type="submit">Đăng ký</button></form><p id="subscribe-status" class="small-note" aria-live="polite"></p></div>
-  <div class="youtube-widget reveal"><i class="fa-brands fa-youtube"></i><h3>YouTube subscribers</h3><span class="not-connected">Chưa kết nối kênh</span><p>Không hiển thị subscriber giả. Khi có kênh YouTube và API, số lượng thực tế có thể được tích hợp.</p></div>
- </div></div></section>
+ </div></section>
   </main>
 
   <!-- FOOTER: Năm bản quyền được JavaScript tự cập nhật -->
@@ -688,19 +691,72 @@
       });
     });
 
-    /* 6. FORM LIÊN HỆ - dùng mailto thay vì thông báo gửi thành công giả */
+    /* =====================================================
+       6. FORM GỬI EMAIL THẬT - dùng FormSubmit cho GitHub Pages
+       Thay email nhận ở form action và fetch URL nếu cần.
+       Cần xác nhận email kích hoạt sau lần gửi thử đầu tiên.
+       ===================================================== */
     const form = document.getElementById('contact-form');
-    form.addEventListener('submit', event => {
+    const submitButton = document.getElementById('submit-button');
+    const submitLabel = document.getElementById('submit-label');
+    const formStatus = document.getElementById('form-status');
+    const mailEndpoint = 'https://formsubmit.co/ajax/trnhoang1107@gmail.com';
+    let isSubmitting = false;
+
+    function setMailStatus(message, type = '') {
+      formStatus.textContent = message;
+      formStatus.className = 'form-status' + (type ? ' ' + type : '');
+    }
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      if (!form.reportValidity()) return;
-      const name = document.getElementById('full-name').value.trim();
-      const mail = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const subject = encodeURIComponent('Liên hệ Portfolio - ' + name);
-      const body = encodeURIComponent('Họ tên: ' + name + '\nEmail: ' + mail + '\nĐiện thoại: ' + phone + '\n\nNội dung:\n' + message);
-      document.getElementById('form-status').textContent = 'Ứng dụng email sẽ mở; hãy bấm Gửi tại đó.';
-      window.location.href = 'mailto:trnhoang1107@gmail.com?subject=' + subject + '&body=' + body;
+      if (!form.reportValidity() || isSubmitting) return;
+      // Honeypot: chặn các bot cố tự động điền tất cả trường.
+      if (form.elements.namedItem('_honey').value.trim()) return;
+
+      isSubmitting = true;
+      submitButton.disabled = true;
+      submitButton.setAttribute('aria-busy', 'true');
+      submitLabel.textContent = 'Đang gửi...';
+      setMailStatus(document.documentElement.lang === 'en'
+        ? 'Sending your message...' : 'Đang chuyển tin nhắn tới hệ thống email...', 'sending');
+
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+      payload.name = payload.name.trim();
+      payload.email = payload.email.trim();
+      payload.phone = payload.phone.trim();
+      payload.message = payload.message.trim();
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 20000);
+      try {
+        const response = await fetch(mailEndpoint, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        });
+        const result = await response.json().catch(() => ({}));
+        // Chỉ thông báo đã tiếp nhận khi API xác nhận thành công.
+        if (!response.ok || ![true, 'true'].includes(result.success)) {
+          throw new Error('Dịch vụ gửi email chưa tiếp nhận được thông tin.');
+        }
+        setMailStatus(document.documentElement.lang === 'en'
+          ? 'Message accepted! On the first submission, Hoang must confirm the FormSubmit activation email to receive messages.'
+          : 'Tin nhắn đã được tiếp nhận! Nếu là lần gửi đầu tiên, Hoàng cần xác nhận email kích hoạt FormSubmit để nhận thư.', 'success');
+        form.reset();
+      } catch (error) {
+        const timedOut = error.name === 'AbortError';
+        const isEnglish = document.documentElement.lang === 'en';
+        setMailStatus(isEnglish
+          ? (timedOut ? 'Request timed out. Please retry or use the direct email link.' : 'Message could not be sent. Please retry or use the direct email link.')
+          : (timedOut ? 'Kết nối quá lâu. Chưa xác nhận gửi được, hãy thử lại hoặc liên hệ bằng email bên trái.' : 'Không gửi được tin nhắn. Vui lòng thử lại hoặc liên hệ bằng email bên trái.'), 'error');
+      } finally {
+        window.clearTimeout(timeout);
+        isSubmitting = false;
+        submitButton.disabled = false;
+        submitButton.removeAttribute('aria-busy');
+        submitLabel.textContent = document.documentElement.lang === 'en' ? 'Send message' : 'Gửi tin nhắn';
+      }
     });
 
     /* =====================================================
@@ -711,9 +767,8 @@
 <div id="study-modal" class="study-modal" role="dialog" aria-modal="true" aria-labelledby="study-modal-title"><div class="study-dialog"><button class="icon-btn study-close" type="button" id="study-close" aria-label="Đóng ghi chú"><i class="fa-solid fa-xmark"></i></button><span class="eyebrow">Ghi chú kỹ thuật</span><h2 id="study-modal-title"></h2><p id="study-modal-text"></p></div></div>
 <button id="chat-button" class="chat-button" type="button" aria-label="Mở trợ lý FAQ" aria-expanded="false" aria-controls="chat-box"><i class="fa-solid fa-comments"></i></button>
 <aside class="chat-box" id="chat-box" aria-label="Trợ lý tự động"><div class="chat-title">Trợ lý Portfolio (demo)<button id="chat-close" type="button" aria-label="Đóng chat">×</button></div><div class="chat-history" id="chat-history" aria-live="polite"><div class="chat-bubble">Xin chào! Đây là trợ lý trả lời FAQ tự động, không phải chat trực tiếp. Hãy hỏi về kỹ năng, dự án hoặc liên hệ của Hoàng.</div></div><form class="chat-entry" id="chat-form"><label class="visually-hidden" for="chat-question">Câu hỏi</label><input id="chat-question" required maxlength="300" placeholder="Hỏi về kỹ năng, dự án..."><button type="submit" aria-label="Gửi câu hỏi"><i class="fa-solid fa-arrow-up"></i></button></form></aside>
-<div id="cv-paper"><h1>TRẦN HOÀNG</h1><p><strong>Information Technology Student</strong> — FPT University, Cần Thơ</p><p>Cần Thơ, Việt Nam · 0974 736 573 · trnhoang1107@gmail.com</p><p>GitHub: github.com/TranHoang-th</p><h2>GIỚI THIỆU</h2><p>Sinh viên năm 3 ngành Công nghệ Thông tin tại Đại học FPT Cần Thơ, quan tâm phát triển ứng dụng và giao diện phần mềm. Mong muốn nâng cao kỹ năng qua dự án thực tế và cơ hội thực tập.</p><h2>HỌC VẤN</h2><p>FPT University Cần Thơ · Information Technology · Sinh viên năm 3</p><h2>KỸ NĂNG</h2><p>Java/OOP, C#, WPF/MVVM, HTML, CSS, JavaScript, SQL, Git/GitHub, UI Responsive.</p><h2>DỰ ÁN HỌC TẬP</h2><ul><li><strong>F-Cinema:</strong> Quản lý phim và suất chiếu trong dự án nhóm.</li><li><strong>Student Management WPF:</strong> C# và WPF, chức năng CRUD/tìm kiếm.</li><li><strong>Badminton Court Management:</strong> Java OOP, Collections, File I/O.</li><li><strong>Portfolio cá nhân:</strong> HTML, CSS và JavaScript thuần.</li></ul><h2>MỤC TIÊU</h2><p>Trau dồi kỹ năng lập trình, phát triển dự án có thể demo và hướng tới cơ hội thực tập sinh CNTT.</p><p style="font-size:10pt;margin-top:25px">CV mẫu tạo tự động. Vui lòng kiểm tra lại trước khi gửi nhà tuyển dụng.</p></div>
 <script>
-/* Các tính năng bổ sung: song ngữ, in CV, blog, FAQ, subscribe qua email */
+/* Các tính năng bổ sung: song ngữ, tải CV thật, blog và FAQ */
 (function(){'use strict';
 const list=[
  ['#main-nav a',['Home','Skills','Projects','About','Contact','Writing','Docs']],
@@ -724,11 +779,8 @@ const list=[
  ['#bai-viet .section-head p',['Short technical notes from topics I have studied. New posts can be added later.']],
  ['#tai-lieu .section-head p',['Official learning references and trusted technical documentation.']],
  ['.learning-card .read-btn',['Read note','Read note','Read note']],
- ['.newsletter h3',['Follow future posts']],['.newsletter>p',['Send a subscription request via email. There is no automated mailing list yet.']],
- ['#subscribe-form button',['Subscribe']],['.youtube-widget .not-connected',['Not connected']],
- ['.youtube-widget p',['No fake subscriber counts. A real count can be displayed when a channel and API are connected.']],
- ['.contact-form h3',['Send a message']],['#submit-label',['Compose email']],
- ['.contact-form .hint',['This opens your email app; press Send there to complete.']]
+ ['.contact-form h3',['Send a message']],['#submit-label',['Send message']],
+ ['.contact-form .hint',['Messages are delivered using FormSubmit. No email application is needed.']]
 ];
 /* Phần dịch bổ sung cho Skills, Projects, About, Contact và Blog. */
 list.push(
@@ -746,7 +798,7 @@ list.push(
  ['#lien-he .contact-intro h3',["Let's get in touch!"]],
  ['#lien-he .contact-intro>p',['You can contact me by email, phone or Facebook. I will respond when possible.']],
  ['#lien-he .contact-list small',['Email','Phone number','Location','Social media']],
- ['#lien-he .contact-form>p',['Fill in the form to open a draft in your email application.']],
+ ['#lien-he .contact-form>p',['Fill in this form to send a message directly to my email.']],
  ['#lien-he .field label',['Full name *','Email *','Phone number','Message *']],
  ['#bai-viet .learning-card h3',['OOP: Four Core Principles','MVVM & Data Binding','Basic Git Workflow']],
  ['#bai-viet .learning-card p',['Encapsulation, inheritance, polymorphism and abstraction in Java.','Separating Model, View and ViewModel in WPF applications.','Branches, commits, pull and push in team projects.']],
@@ -758,7 +810,7 @@ list.forEach(([selector,values])=>[...document.querySelectorAll(selector)].forEa
 let language='vi';const langBtn=document.getElementById('lang-toggle');
 function changeLanguage(){language=language==='vi'?'en':'vi';translations.forEach(x=>{if(language==='vi')x.el.innerHTML=x.html;else x.el.textContent=x.en});langBtn.textContent=language==='vi'?'EN':'VI';document.documentElement.lang=language;try{localStorage.setItem('portfolio-language',language)}catch(e){}}
 langBtn.addEventListener('click',changeLanguage);try{if(localStorage.getItem('portfolio-language')==='en')changeLanguage()}catch(e){}
-document.getElementById('cv-download').addEventListener('click',()=>window.print());
+// Nút Tải CV dùng liên kết download PDF thật được nhúng trực tiếp ở phần HERO.
 const articles={
  oop:{title:'OOP - 4 nguyên lý cơ bản',content:'Encapsulation (đóng gói): bảo vệ trạng thái đối tượng, sử dụng private và getter/setter khi cần.\n\nInheritance (kế thừa): lớp con sử dụng và mở rộng lớp cha.\n\nPolymorphism (đa hình): cùng lời gọi phương thức nhưng đối tượng xử lý khác nhau, ví dụ override.\n\nAbstraction (trừu tượng): biểu diễn hành vi chính và che giấu chi tiết.\n\nVí dụ: Employee và Manager trong Java.'},
  mvvm:{title:'MVVM và Data Binding trong WPF',content:'Model: dữ liệu và nghiệp vụ.\n\nView: giao diện viết bằng XAML.\n\nViewModel: xử lý dữ liệu và thao tác cho View.\n\nBinding giúp TextBox và DataGrid tự đồng bộ dữ liệu. RelayCommand dùng để xử lý nút bấm theo MVVM.\n\nVí dụ: Student Management WPF với Add, Update, Delete và Search.'},
@@ -768,7 +820,6 @@ const modal=document.getElementById('study-modal');let lastFocus=null;
 document.querySelectorAll('[data-article]').forEach(btn=>btn.addEventListener('click',()=>{const a=articles[btn.dataset.article];if(!a)return;lastFocus=document.activeElement;document.getElementById('study-modal-title').textContent=a.title;document.getElementById('study-modal-text').textContent=a.content;modal.classList.add('open');document.getElementById('study-close').focus()}));
 function closeModal(){modal.classList.remove('open');lastFocus?.focus()};
 document.getElementById('study-close').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-document.getElementById('subscribe-form').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('subscriber-email');if(!input.checkValidity())return;const subject=encodeURIComponent('Đăng ký theo dõi bài viết');const body=encodeURIComponent('Xin chào Hoàng, mình muốn theo dõi bài viết qua email '+input.value.trim());document.getElementById('subscribe-status').textContent='Ứng dụng email sẽ mở; hãy nhấn Gửi để đăng ký.';window.location.href='mailto:trnhoang1107@gmail.com?subject='+subject+'&body='+body});
 const chat=document.getElementById('chat-box'),chatBtn=document.getElementById('chat-button');
 function toggleChat(value){chat.classList.toggle('open',value);chatBtn.setAttribute('aria-expanded',String(value));if(value)document.getElementById('chat-question').focus()}
 chatBtn.addEventListener('click',()=>toggleChat(!chat.classList.contains('open')));document.getElementById('chat-close').addEventListener('click',()=>toggleChat(false));
