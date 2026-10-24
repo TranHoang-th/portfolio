@@ -347,15 +347,11 @@
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.study-modal{display:none;position:fixed;inset:0;z-index:150;align-items:center;justify-content:center;padding:20px;background:rgba(9,20,42,.75)}.study-modal.open{display:flex}
 .study-dialog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:18px;padding:33px;width:min(580px,100%);max-height:85vh;overflow:auto;position:relative}
 .study-dialog h2{font-size:24px;margin:4px 34px 19px 0}.study-dialog p{font-size:14px;white-space:pre-line;line-height:1.8}.study-close{position:absolute;top:14px;right:14px}
-.chat-button{position:fixed;right:23px;bottom:23px;width:58px;height:58px;border:0;border-radius:18px;background:var(--primary);color:white;font-size:22px;box-shadow:0 14px 30px rgba(31,56,130,.25);z-index:98}
-.chat-box{position:fixed;right:23px;bottom:92px;display:none;width:min(340px,calc(100vw - 35px));z-index:98;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:16px;box-shadow:0 20px 55px rgba(0,0,0,.17);overflow:hidden}.chat-box.open{display:block}
-.chat-title{padding:14px 17px;background:var(--primary);color:white;display:flex;justify-content:space-between;align-items:center;font-weight:800}.chat-title button{background:none;border:0;color:white;font-size:20px}
-.chat-history{padding:17px;height:245px;overflow:auto;display:flex;flex-direction:column;gap:12px}.chat-bubble{border-radius:13px;padding:9px 12px;font-size:12px;max-width:90%;background:var(--surface-soft);align-self:flex-start;line-height:1.6}.chat-bubble.you{background:var(--primary);color:white;align-self:flex-end}
-.chat-entry{display:flex;gap:7px;padding:11px;border-top:1px solid var(--border)}.chat-entry input{flex:1;min-width:0;border-radius:8px;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:9px}.chat-entry button{border:0;background:var(--primary);border-radius:8px;color:white;padding:0 13px}
+/* Đã xóa widget trợ lý chat: không cần CSS chat. */
 #cv-paper{display:none}
 @media(max-width:1120px){.nav{gap:13px}.nav a{font-size:12px}}
 @media(max-width:900px){.learning-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.learning-grid,.student-facts,.chat-box{right:15px;bottom:80px}.chat-button{right:15px;bottom:15px}.language-toggle{width:38px}}
+@media(max-width:700px){.learning-grid,.student-facts{grid-template-columns:1fr}.language-toggle{width:38px}}
 
 /* Nút CV thật trên GitHub Pages: tải xuống hoặc mở PDF trong tab mới. */
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -413,7 +409,7 @@
           <div class="hero-social">
 <a href="https://github.com/TranHoang-th" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub của Trần Hoàng"><i class="fa-brands fa-github"></i></a><span>Kết nối với tôi</span>
             <a class="social-link" href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Trần Hoàng"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
-            <a class="social-link" href="mailto:hoangtce200525@gmail.com" aria-label="Gửi email cho Trần Hoàng"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+            <a class="social-link" href="mailto:trnhoang1107@gmail.com" aria-label="Gửi email cho Trần Hoàng"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -464,27 +460,29 @@
           <div class="contact-intro reveal">
             <h3>Rất vui được trò chuyện!</h3><p>Bạn có thể liên hệ trực tiếp qua email, điện thoại hoặc Facebook. Tôi sẽ phản hồi khi có thể.</p>
             <div class="contact-list">
-              <div class="contact-item"><i class="fa-regular fa-envelope" aria-hidden="true"></i><div><small>Email</small><a href="mailto:hoangtce200525@gmail.com">hoangtce200525@gmail.com</a></div></div>
+              <div class="contact-item"><i class="fa-regular fa-envelope" aria-hidden="true"></i><div><small>Email</small><a href="mailto:trnhoang1107@gmail.com">trnhoang1107@gmail.com</a></div></div>
               <div class="contact-item"><i class="fa-solid fa-phone" aria-hidden="true"></i><div><small>Số điện thoại</small><a href="tel:+84974736573">0974 736 573</a></div></div>
               <div class="contact-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><small>Địa chỉ</small><span>Cần Thơ, Việt Nam</span></div></div>
               <div class="contact-item"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><div><small>Mạng xã hội</small><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer">Facebook / Trần Hoàng <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div>
             </div>
           </div>
-          <!-- FORM LIÊN HỆ HTML THẬT: submit chuyển tới trang FormSubmit xác nhận CAPTCHA/kích hoạt. -->
-          <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/hoangtce200525@gmail.com" method="POST" target="_self" autocomplete="on">
+          <!-- FORM GỬI EMAIL: sử dụng HTML POST tới FormSubmit (không có AJAX).
+               ĐỊA CHỈ NHẬN: trnhoang1107@gmail.com. Lần đầu cần kích hoạt FormSubmit.
+               Nếu muốn đổi địa chỉ nhận, cập nhật action bên dưới và xác nhận lại. -->
+          <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/trnhoang1107@gmail.com" method="POST" target="_self" autocomplete="on">
             <input type="hidden" name="_subject" value="Liên hệ mới từ Portfolio Trần Hoàng">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="true">
             <input type="hidden" name="_url" value="https://tranhoang-th.github.io/portfolio/">
             <div class="honeypot" aria-hidden="true"><label for="company-website">Website công ty (để trống)</label><input id="company-website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
-            <h3>Gửi lời nhắn</h3><p>Điền thông tin rồi nhấn Gửi tin nhắn. FormSubmit sẽ mở trang xác nhận để đảm bảo tin nhắn được tiếp nhận.</p>
+            <h3>Gửi lời nhắn</h3><p>Điền thông tin và nhấn Gửi tin nhắn. Bạn sẽ được chuyển tới trang FormSubmit để hoàn tất gửi và CAPTCHA (nếu được yêu cầu).</p>
             <div class="form-grid">
               <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="name" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
               <div class="field"><label for="email">Email <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="email@example.com" autocomplete="email" maxlength="150" required></div>
               <div class="field full"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" maxlength="25"></div>
               <div class="field full"><label for="message">Nội dung <span class="accent">*</span></label><textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" minlength="10" maxlength="2000" required></textarea></div>
             </div>
-            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">FormSubmit sẽ mở trang xác nhận. Khi kích hoạt lần đầu, kiểm tra email <strong>hoangtce200525@gmail.com</strong> (cả Thư rác) và bấm <strong>Activate Form</strong>. Sau đó gửi thử lại.</span></div>
+            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><span class="hint">Tin nhắn sẽ được xử lý bởi FormSubmit và bạn sẽ được chuyển sang trang xác nhận. Lần đầu, chủ website cần mở Gmail <strong>trnhoang1107@gmail.com</strong>, bấm <strong>Activate Form</strong> (kiểm tra cả Spam).</span></div>
           </form>
         </div>
       </div>
@@ -508,7 +506,7 @@
   </main>
 
   <!-- FOOTER: Năm bản quyền được JavaScript tự cập nhật -->
-  <footer class="footer"><div class="container footer-content"><p>© <span id="current-year">2026</span> <strong>Trần Hoàng</strong>. All rights reserved.</p><div class="footer-social"><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="mailto:hoangtce200525@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a><a href="#trang-chu" aria-label="Quay lại đầu trang"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></div></div></footer>
+  <footer class="footer"><div class="container footer-content"><p>© <span id="current-year">2026</span> <strong>Trần Hoàng</strong>. All rights reserved.</p><div class="footer-social"><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="mailto:trnhoang1107@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a><a href="#trang-chu" aria-label="Quay lại đầu trang"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></div></div></footer>
 
   <!-- Modal chi tiết: dùng thẻ dialog có sẵn của trình duyệt -->
   <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title">
@@ -706,10 +704,8 @@
     document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 <div id="study-modal" class="study-modal" role="dialog" aria-modal="true" aria-labelledby="study-modal-title"><div class="study-dialog"><button class="icon-btn study-close" type="button" id="study-close" aria-label="Đóng ghi chú"><i class="fa-solid fa-xmark"></i></button><span class="eyebrow">Ghi chú kỹ thuật</span><h2 id="study-modal-title"></h2><p id="study-modal-text"></p></div></div>
-<button id="chat-button" class="chat-button" type="button" aria-label="Mở trợ lý FAQ" aria-expanded="false" aria-controls="chat-box"><i class="fa-solid fa-comments"></i></button>
-<aside class="chat-box" id="chat-box" aria-label="Trợ lý tự động"><div class="chat-title">Trợ lý Portfolio (demo)<button id="chat-close" type="button" aria-label="Đóng chat">×</button></div><div class="chat-history" id="chat-history" aria-live="polite"><div class="chat-bubble">Xin chào! Đây là trợ lý trả lời FAQ tự động, không phải chat trực tiếp. Hãy hỏi về kỹ năng, dự án hoặc liên hệ của Hoàng.</div></div><form class="chat-entry" id="chat-form"><label class="visually-hidden" for="chat-question">Câu hỏi</label><input id="chat-question" required maxlength="300" placeholder="Hỏi về kỹ năng, dự án..."><button type="submit" aria-label="Gửi câu hỏi"><i class="fa-solid fa-arrow-up"></i></button></form></aside>
 <script>
-/* Các tính năng bổ sung: song ngữ, tải CV thật, blog và FAQ */
+/* Các tính năng bổ sung: song ngữ, xem/tải CV thật và bài viết kỹ thuật */
 (function(){'use strict';
 const list=[
  ['#main-nav a',['Home','Skills','Projects','About','Contact','Writing','Docs']],
@@ -721,7 +717,7 @@ const list=[
  ['#tai-lieu .section-head p',['Official learning references and trusted technical documentation.']],
  ['.learning-card .read-btn',['Read note','Read note','Read note']],
  ['.contact-form h3',['Send a message']],['#submit-label',['Send message']],
- ['.contact-form .hint',['After submitting, FormSubmit opens a confirmation page. First-time setup requires activating the receiving email.']]
+ ['.contact-form .hint',['Submitting opens the FormSubmit confirmation page. The owner must activate the recipient mailbox first.']]
 ];
 /* Phần dịch bổ sung cho Skills, Projects, About, Contact và Blog. */
 list.push(
@@ -761,10 +757,7 @@ const modal=document.getElementById('study-modal');let lastFocus=null;
 document.querySelectorAll('[data-article]').forEach(btn=>btn.addEventListener('click',()=>{const a=articles[btn.dataset.article];if(!a)return;lastFocus=document.activeElement;document.getElementById('study-modal-title').textContent=a.title;document.getElementById('study-modal-text').textContent=a.content;modal.classList.add('open');document.getElementById('study-close').focus()}));
 function closeModal(){modal.classList.remove('open');lastFocus?.focus()};
 document.getElementById('study-close').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-const chat=document.getElementById('chat-box'),chatBtn=document.getElementById('chat-button');
-function toggleChat(value){chat.classList.toggle('open',value);chatBtn.setAttribute('aria-expanded',String(value));if(value)document.getElementById('chat-question').focus()}
-chatBtn.addEventListener('click',()=>toggleChat(!chat.classList.contains('open')));document.getElementById('chat-close').addEventListener('click',()=>toggleChat(false));
-document.getElementById('chat-form').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chat-question'),msg=input.value.trim();if(!msg)return;const log=document.getElementById('chat-history');function say(t,kind){const b=document.createElement('div');b.className='chat-bubble '+kind;b.textContent=t;log.appendChild(b);log.scrollTop=log.scrollHeight};say(msg,'you');input.value='';const text=msg.toLowerCase();let reply=/skill|kỹ năng|hoc|học|công nghệ/.test(text)?'Hoàng đang học Java, C#, WPF, HTML/CSS/JavaScript, SQL và Git/GitHub. Xem mục Kỹ năng.':/project|dự án|đồ án|bài tập/.test(text)?'Một số dự án học tập: quản lý rạp phim, sinh viên WPF, sân cầu lông và Bubble Sort. Xem mục Dự án.':/email|facebook|liên hệ|số điện thoại|contact|phone/.test(text)?'Liên hệ Hoàng qua hoangtce200525@gmail.com hoặc Facebook trong mục Liên hệ.':'Đây là trợ lý demo, không phải chat trực tiếp. Mình chỉ trả lời câu hỏi về kỹ năng, dự án và liên hệ. Bạn có thể gửi email cho Hoàng.';say(reply,'bot')});
+// Chatbot/FAQ đã được gỡ bỏ theo yêu cầu.
 })();
 </script></body>
 </html>
