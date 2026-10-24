@@ -356,7 +356,9 @@
 /* Nút CV thật trên GitHub Pages: tải xuống hoặc mở PDF trong tab mới. */
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
 @media(max-width:680px) { .hero-actions .btn { min-width: 0; } }
-</style>
+    /* Nhãn email người gửi: chỉ là ghi chú, không can thiệp vào chức năng POST */
+    .sender-email-note{font-size:.73rem;line-height:1.45;color:var(--muted);font-weight:400}
+  </style>
 </head>
 <body>
   <!-- =====================================================
@@ -478,11 +480,11 @@
             <h3>Gửi lời nhắn</h3><p>Hãy để lại lời nhắn, mình sẽ phản hồi qua email của bạn khi có thể.</p>
             <div class="form-grid">
               <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="name" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
-              <div class="field"><label for="email">Email <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="email@example.com" autocomplete="email" maxlength="150" required></div>
+              <div class="field"><label for="email">Email của người gửi <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="Email để mình phản hồi" autocomplete="email" maxlength="150" aria-describedby="sender-email-note" required><small id="sender-email-note" class="sender-email-note">Đây là email của người liên hệ, không phải email nhận tin của website.</small></div>
               <div class="field full"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" maxlength="25"></div>
               <div class="field full"><label for="message">Nội dung <span class="accent">*</span></label><textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" minlength="10" maxlength="2000" required></textarea></div>
             </div>
-            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><span class="hint">Biểu mẫu sử dụng FormSubmit. Sau khi gửi, bạn sẽ được chuyển đến trang xác nhận (và CAPTCHA nếu được yêu cầu).</span></div>
+            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><span class="hint">Nhấn Gửi tin nhắn, sau đó hoàn tất CAPTCHA nếu FormSubmit yêu cầu. Việc hiện trang gửi thành công không đảm bảo email đã vào Inbox; người quản lý cần xác nhận FormSubmit và kiểm tra Spam nếu chưa nhận được.</span></div>
           </form>
         </div>
       </div>
