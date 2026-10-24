@@ -413,7 +413,7 @@
           <div class="hero-social">
 <a href="https://github.com/TranHoang-th" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub của Trần Hoàng"><i class="fa-brands fa-github"></i></a><span>Kết nối với tôi</span>
             <a class="social-link" href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Trần Hoàng"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
-            <a class="social-link" href="mailto:trnhoang1107@gmail.com" aria-label="Gửi email cho Trần Hoàng"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
+            <a class="social-link" href="mailto:hoangtce200525@gmail.com" aria-label="Gửi email cho Trần Hoàng"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
@@ -464,27 +464,27 @@
           <div class="contact-intro reveal">
             <h3>Rất vui được trò chuyện!</h3><p>Bạn có thể liên hệ trực tiếp qua email, điện thoại hoặc Facebook. Tôi sẽ phản hồi khi có thể.</p>
             <div class="contact-list">
-              <div class="contact-item"><i class="fa-regular fa-envelope" aria-hidden="true"></i><div><small>Email</small><a href="mailto:trnhoang1107@gmail.com">trnhoang1107@gmail.com</a></div></div>
+              <div class="contact-item"><i class="fa-regular fa-envelope" aria-hidden="true"></i><div><small>Email</small><a href="mailto:hoangtce200525@gmail.com">hoangtce200525@gmail.com</a></div></div>
               <div class="contact-item"><i class="fa-solid fa-phone" aria-hidden="true"></i><div><small>Số điện thoại</small><a href="tel:+84974736573">0974 736 573</a></div></div>
               <div class="contact-item"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><small>Địa chỉ</small><span>Cần Thơ, Việt Nam</span></div></div>
               <div class="contact-item"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><div><small>Mạng xã hội</small><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer">Facebook / Trần Hoàng <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div>
             </div>
           </div>
-          <!-- FORM LIÊN HỆ THẬT: FormSubmit xử lý gửi email; kích hoạt địa chỉ nhận ở lần đầu. -->
-          <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/trnhoang1107@gmail.com" method="POST" autocomplete="on">
+          <!-- FORM LIÊN HỆ HTML THẬT: submit chuyển tới trang FormSubmit xác nhận CAPTCHA/kích hoạt. -->
+          <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/hoangtce200525@gmail.com" method="POST" target="_self" autocomplete="on">
             <input type="hidden" name="_subject" value="Liên hệ mới từ Portfolio Trần Hoàng">
             <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_captcha" value="true">
             <input type="hidden" name="_url" value="https://tranhoang-th.github.io/portfolio/">
             <div class="honeypot" aria-hidden="true"><label for="company-website">Website công ty (để trống)</label><input id="company-website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
-            <h3>Gửi lời nhắn</h3><p>Điền thông tin bên dưới, tin nhắn sẽ được chuyển đến email của mình ngay trên website.</p>
+            <h3>Gửi lời nhắn</h3><p>Điền thông tin rồi nhấn Gửi tin nhắn. FormSubmit sẽ mở trang xác nhận để đảm bảo tin nhắn được tiếp nhận.</p>
             <div class="form-grid">
               <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="name" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
               <div class="field"><label for="email">Email <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="email@example.com" autocomplete="email" maxlength="150" required></div>
               <div class="field full"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" maxlength="25"></div>
               <div class="field full"><label for="message">Nội dung <span class="accent">*</span></label><textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" minlength="10" maxlength="2000" required></textarea></div>
             </div>
-            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">Thông tin được gửi qua FormSubmit. Không cần mở ứng dụng email.</span></div>
+            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><p id="form-status" class="form-status" role="status" aria-live="polite"></p><span class="hint">FormSubmit sẽ mở trang xác nhận. Khi kích hoạt lần đầu, kiểm tra email <strong>hoangtce200525@gmail.com</strong> (cả Thư rác) và bấm <strong>Activate Form</strong>. Sau đó gửi thử lại.</span></div>
           </form>
         </div>
       </div>
@@ -508,7 +508,7 @@
   </main>
 
   <!-- FOOTER: Năm bản quyền được JavaScript tự cập nhật -->
-  <footer class="footer"><div class="container footer-content"><p>© <span id="current-year">2026</span> <strong>Trần Hoàng</strong>. All rights reserved.</p><div class="footer-social"><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="mailto:trnhoang1107@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a><a href="#trang-chu" aria-label="Quay lại đầu trang"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></div></div></footer>
+  <footer class="footer"><div class="container footer-content"><p>© <span id="current-year">2026</span> <strong>Trần Hoàng</strong>. All rights reserved.</p><div class="footer-social"><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a><a href="mailto:hoangtce200525@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope" aria-hidden="true"></i></a><a href="#trang-chu" aria-label="Quay lại đầu trang"><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></div></div></footer>
 
   <!-- Modal chi tiết: dùng thẻ dialog có sẵn của trình duyệt -->
   <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title">
@@ -692,72 +692,13 @@
     });
 
     /* =====================================================
-       6. FORM GỬI EMAIL THẬT - dùng FormSubmit cho GitHub Pages
-       Thay email nhận ở form action và fetch URL nếu cần.
-       Cần xác nhận email kích hoạt sau lần gửi thử đầu tiên.
+       6. GỬI EMAIL QUA FORMSUBMIT - FORM HTML GỐC
+       KHÔNG chặn submit bằng AJAX để người dùng nhìn thấy
+       thông báo kích hoạt, CAPTCHA hoặc lỗi từ FormSubmit.
+       Khi muốn thay email nhận, sửa cả action của <form> và
+       email liên hệ ở HTML phía trên.
        ===================================================== */
-    const form = document.getElementById('contact-form');
-    const submitButton = document.getElementById('submit-button');
-    const submitLabel = document.getElementById('submit-label');
-    const formStatus = document.getElementById('form-status');
-    const mailEndpoint = 'https://formsubmit.co/ajax/trnhoang1107@gmail.com';
-    let isSubmitting = false;
-
-    function setMailStatus(message, type = '') {
-      formStatus.textContent = message;
-      formStatus.className = 'form-status' + (type ? ' ' + type : '');
-    }
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      if (!form.reportValidity() || isSubmitting) return;
-      // Honeypot: chặn các bot cố tự động điền tất cả trường.
-      if (form.elements.namedItem('_honey').value.trim()) return;
-
-      isSubmitting = true;
-      submitButton.disabled = true;
-      submitButton.setAttribute('aria-busy', 'true');
-      submitLabel.textContent = 'Đang gửi...';
-      setMailStatus(document.documentElement.lang === 'en'
-        ? 'Sending your message...' : 'Đang chuyển tin nhắn tới hệ thống email...', 'sending');
-
-      const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
-      payload.name = payload.name.trim();
-      payload.email = payload.email.trim();
-      payload.phone = payload.phone.trim();
-      payload.message = payload.message.trim();
-      const controller = new AbortController();
-      const timeout = window.setTimeout(() => controller.abort(), 20000);
-      try {
-        const response = await fetch(mailEndpoint, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-          body: JSON.stringify(payload),
-          signal: controller.signal
-        });
-        const result = await response.json().catch(() => ({}));
-        // Chỉ thông báo đã tiếp nhận khi API xác nhận thành công.
-        if (!response.ok || ![true, 'true'].includes(result.success)) {
-          throw new Error('Dịch vụ gửi email chưa tiếp nhận được thông tin.');
-        }
-        setMailStatus(document.documentElement.lang === 'en'
-          ? 'Message accepted! On the first submission, Hoang must confirm the FormSubmit activation email to receive messages.'
-          : 'Tin nhắn đã được tiếp nhận! Nếu là lần gửi đầu tiên, Hoàng cần xác nhận email kích hoạt FormSubmit để nhận thư.', 'success');
-        form.reset();
-      } catch (error) {
-        const timedOut = error.name === 'AbortError';
-        const isEnglish = document.documentElement.lang === 'en';
-        setMailStatus(isEnglish
-          ? (timedOut ? 'Request timed out. Please retry or use the direct email link.' : 'Message could not be sent. Please retry or use the direct email link.')
-          : (timedOut ? 'Kết nối quá lâu. Chưa xác nhận gửi được, hãy thử lại hoặc liên hệ bằng email bên trái.' : 'Không gửi được tin nhắn. Vui lòng thử lại hoặc liên hệ bằng email bên trái.'), 'error');
-      } finally {
-        window.clearTimeout(timeout);
-        isSubmitting = false;
-        submitButton.disabled = false;
-        submitButton.removeAttribute('aria-busy');
-        submitLabel.textContent = document.documentElement.lang === 'en' ? 'Send message' : 'Gửi tin nhắn';
-      }
-    });
+    // Native HTML form tự gửi bằng method="POST" và action của <form>.
 
     /* =====================================================
        7. TỰ ĐỘNG CẬP NHẬT NĂM BẢN QUYỀN
@@ -780,7 +721,7 @@ const list=[
  ['#tai-lieu .section-head p',['Official learning references and trusted technical documentation.']],
  ['.learning-card .read-btn',['Read note','Read note','Read note']],
  ['.contact-form h3',['Send a message']],['#submit-label',['Send message']],
- ['.contact-form .hint',['Messages are delivered using FormSubmit. No email application is needed.']]
+ ['.contact-form .hint',['After submitting, FormSubmit opens a confirmation page. First-time setup requires activating the receiving email.']]
 ];
 /* Phần dịch bổ sung cho Skills, Projects, About, Contact và Blog. */
 list.push(
@@ -823,7 +764,7 @@ document.getElementById('study-close').addEventListener('click',closeModal);moda
 const chat=document.getElementById('chat-box'),chatBtn=document.getElementById('chat-button');
 function toggleChat(value){chat.classList.toggle('open',value);chatBtn.setAttribute('aria-expanded',String(value));if(value)document.getElementById('chat-question').focus()}
 chatBtn.addEventListener('click',()=>toggleChat(!chat.classList.contains('open')));document.getElementById('chat-close').addEventListener('click',()=>toggleChat(false));
-document.getElementById('chat-form').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chat-question'),msg=input.value.trim();if(!msg)return;const log=document.getElementById('chat-history');function say(t,kind){const b=document.createElement('div');b.className='chat-bubble '+kind;b.textContent=t;log.appendChild(b);log.scrollTop=log.scrollHeight};say(msg,'you');input.value='';const text=msg.toLowerCase();let reply=/skill|kỹ năng|hoc|học|công nghệ/.test(text)?'Hoàng đang học Java, C#, WPF, HTML/CSS/JavaScript, SQL và Git/GitHub. Xem mục Kỹ năng.':/project|dự án|đồ án|bài tập/.test(text)?'Một số dự án học tập: quản lý rạp phim, sinh viên WPF, sân cầu lông và Bubble Sort. Xem mục Dự án.':/email|facebook|liên hệ|số điện thoại|contact|phone/.test(text)?'Liên hệ Hoàng qua trnhoang1107@gmail.com hoặc Facebook trong mục Liên hệ.':'Đây là trợ lý demo, không phải chat trực tiếp. Mình chỉ trả lời câu hỏi về kỹ năng, dự án và liên hệ. Bạn có thể gửi email cho Hoàng.';say(reply,'bot')});
+document.getElementById('chat-form').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chat-question'),msg=input.value.trim();if(!msg)return;const log=document.getElementById('chat-history');function say(t,kind){const b=document.createElement('div');b.className='chat-bubble '+kind;b.textContent=t;log.appendChild(b);log.scrollTop=log.scrollHeight};say(msg,'you');input.value='';const text=msg.toLowerCase();let reply=/skill|kỹ năng|hoc|học|công nghệ/.test(text)?'Hoàng đang học Java, C#, WPF, HTML/CSS/JavaScript, SQL và Git/GitHub. Xem mục Kỹ năng.':/project|dự án|đồ án|bài tập/.test(text)?'Một số dự án học tập: quản lý rạp phim, sinh viên WPF, sân cầu lông và Bubble Sort. Xem mục Dự án.':/email|facebook|liên hệ|số điện thoại|contact|phone/.test(text)?'Liên hệ Hoàng qua hoangtce200525@gmail.com hoặc Facebook trong mục Liên hệ.':'Đây là trợ lý demo, không phải chat trực tiếp. Mình chỉ trả lời câu hỏi về kỹ năng, dự án và liên hệ. Bạn có thể gửi email cho Hoàng.';say(reply,'bot')});
 })();
 </script></body>
 </html>
