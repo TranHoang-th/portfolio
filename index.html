@@ -195,7 +195,7 @@
     .price-note { margin-top: 24px; margin-bottom: 0; text-align: center; font-size: .82rem; }
 
     /* =====================================================
-       8. LIÊN HỆ + FORM DEMO
+       8. THÔNG TIN LIÊN HỆ
        ===================================================== */
     .contact-grid { display: grid; grid-template-columns: .87fr 1.13fr; gap: 48px; align-items: start; }
     .contact-intro h3 { font-size: 1.62rem; margin-bottom: 14px; }
@@ -206,24 +206,7 @@
     .contact-item small { display: block; font-size: .78rem; color: var(--muted); font-weight: 600; }
     .contact-item a, .contact-item span { display: inline-block; overflow-wrap: anywhere; font-size: .92rem; font-weight: 700; }
     .contact-item a:hover { color: var(--primary); }
-    .contact-form { background: var(--surface); border: 1px solid var(--border); border-radius: 22px; box-shadow: var(--shadow); padding: 36px; }
-    .contact-form h3 { margin-bottom: 4px; }
-    .contact-form > p { font-size: .86rem; margin-bottom: 24px; }
-    .form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 17px; }
-    .field { display: flex; flex-direction: column; gap: 7px; }
-    .field.full { grid-column: 1/-1; }
-    .field label { font-size: .82rem; font-weight: 800; }
-    .field input, .field textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; outline: none; background: var(--bg); color: var(--text); transition: border-color .2s, box-shadow .2s; }
-    .field input::placeholder, .field textarea::placeholder { color: var(--muted); opacity: .75; }
-    .field input:focus, .field textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(100,151,236,.14); }
-    .field textarea { resize: vertical; min-height: 122px; }
-    .form-footer { margin-top: 22px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .form-status { min-height: 23px; margin: 0; font-size: .83rem; font-weight: 700; }
-    .form-status.success { color: #16845d; }
-    .form-status.error { color: #cb4b4b; }
-    .honeypot { position: absolute; left: -99999px; width: 1px; height: 1px; overflow: hidden; }
-    #submit-button:disabled { cursor: wait; opacity: .65; }
-    .form-status.sending { color: var(--primary); }
+
 
     /* =====================================================
        9. FOOTER + MODAL CHI TIẾT DỰ ÁN
@@ -278,7 +261,7 @@
       .service-card.featured { transform: none; }
       .service-card:last-child { grid-column: 1/-1; max-width: calc(50% - 9px); width: 100%; justify-self: center; }
       .contact-grid { gap: 24px; }
-      .contact-form { padding: 25px; }
+
     }
     @media (max-width: 640px) {
       html { scroll-padding-top: 80px; }
@@ -308,7 +291,7 @@
       .service-card, .service-card:last-child { grid-column: auto; max-width: none; }
       .service-card.featured { margin-top: 8px; }
       .contact-grid { gap: 35px; }
-      .form-grid { grid-template-columns: 1fr; }
+
       .footer-content { justify-content: center; text-align: center; }
     }
     @media (max-width: 380px) {
@@ -319,7 +302,7 @@
       .floating-pill { font-size: .61rem; }
       .pill-code { right: -12px; }
       .pill-location { left: -12px; }
-      .contact-form { padding: 19px; }
+
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -327,7 +310,7 @@
     }
   
 /* =====================================================
-   8. NỘI DUNG PORTFOLIO SINH VIÊN + BLOG/CHAT
+   8. NỘI DUNG PORTFOLIO SINH VIÊN + BLOG
    ===================================================== */
 .hero-actions {flex-wrap:wrap}
 .hero .portrait{object-fit:cover;object-position:center 27%}
@@ -358,7 +341,31 @@
 @media(max-width:680px) { .hero-actions .btn { min-width: 0; } }
     /* Nhãn email người gửi: chỉ là ghi chú, không can thiệp vào chức năng POST */
     .sender-email-note{font-size:.73rem;line-height:1.45;color:var(--muted);font-weight:400}
-  </style>
+  
+    /* ========== Liên hệ trực tiếp: không sử dụng form gửi dữ liệu ========== */
+    .contact-direct {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 22px; box-shadow: var(--shadow); padding: 38px;
+    }
+    .contact-direct-icon {
+      width: 54px; height: 54px; display: grid; place-items: center;
+      border-radius: 16px; background: var(--surface-soft);
+      color: var(--primary); font-size: 1.4rem; margin-bottom: 22px;
+    }
+    .contact-direct .eyebrow { display: block; margin-bottom: 9px; }
+    .contact-direct h3 { font-size: 1.45rem; margin: 0 0 14px; }
+    .contact-direct > p { font-size: .94rem; line-height: 1.9; }
+    .contact-direct-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0 25px; }
+    .contact-direct-actions .btn { text-decoration: none; }
+    .contact-direct-note { display: flex; align-items: flex-start; gap: 8px; font-size: .8rem !important; color: var(--muted); }
+    .contact-direct-note i { margin-top: 6px; color: var(--primary); }
+    @media (max-width: 640px) {
+      .contact-direct { padding: 25px 21px; }
+      .contact-direct-actions { flex-direction: column; }
+      .contact-direct-actions .btn { justify-content: center; }
+    }
+
+</style>
 </head>
 <body>
   <!-- =====================================================
@@ -468,24 +475,18 @@
               <div class="contact-item"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i><div><small>Mạng xã hội</small><a href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer">Facebook / Trần Hoàng <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div></div>
             </div>
           </div>
-          <!-- FORM GỬI EMAIL: sử dụng HTML POST tới FormSubmit (không có AJAX).
-               ĐỊA CHỈ NHẬN: trnhoang1107@gmail.com. Lần đầu cần kích hoạt FormSubmit.
-               Nếu muốn đổi địa chỉ nhận, cập nhật action bên dưới và xác nhận lại. -->
-          <form class="contact-form reveal" id="contact-form" action="https://formsubmit.co/trnhoang1107@gmail.com" method="POST" target="_self" autocomplete="on">
-            <input type="hidden" name="_subject" value="New message from Tran Hoang Portfolio">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_url" value="https://tranhoang-th.github.io/portfolio/">
-            <div class="honeypot" aria-hidden="true"><label for="company-website">Website công ty (để trống)</label><input id="company-website" name="_honey" type="text" tabindex="-1" autocomplete="off"></div>
-            <h3>Gửi lời nhắn</h3><p>Hãy để lại lời nhắn, mình sẽ phản hồi qua email của bạn khi có thể.</p>
-            <div class="form-grid">
-              <div class="field"><label for="full-name">Họ và tên <span class="accent">*</span></label><input id="full-name" name="name" type="text" placeholder="Nguyễn Văn A" autocomplete="name" maxlength="100" required></div>
-              <div class="field"><label for="email">Email của người gửi <span class="accent">*</span></label><input id="email" name="email" type="email" placeholder="Email để mình phản hồi" autocomplete="email" maxlength="150" aria-describedby="sender-email-note" required><small id="sender-email-note" class="sender-email-note">Đây là email của người liên hệ, không phải email nhận tin của website.</small></div>
-              <div class="field full"><label for="phone">Số điện thoại</label><input id="phone" name="phone" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" maxlength="25"></div>
-              <div class="field full"><label for="message">Nội dung <span class="accent">*</span></label><textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" minlength="10" maxlength="2000" required></textarea></div>
+          <!-- Chỉ giữ liên hệ trực tiếp, không còn form gửi mail hoặc bên thứ ba. -->
+          <aside class="contact-direct reveal" aria-label="Cách liên hệ trực tiếp">
+            <div class="contact-direct-icon"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></div>
+            <span class="eyebrow">Kết nối với Hoàng</span>
+            <h3>Trao đổi trực tiếp với mình</h3>
+            <p>Mình luôn sẵn sàng trao đổi về các dự án học tập, công nghệ và cơ hội thực tập. Bạn có thể liên hệ qua email hoặc Facebook.</p>
+            <div class="contact-direct-actions">
+              <a class="btn btn-primary" href="mailto:trnhoang1107@gmail.com?subject=Li%C3%AAn%20h%E1%BB%87%20t%E1%BB%AB%20Portfolio%20Tr%E1%BA%A7n%20Ho%C3%A0ng"><i class="fa-regular fa-envelope" aria-hidden="true"></i> Mở ứng dụng email</a>
+              <a class="btn btn-outline" href="https://www.facebook.com/share/19XPnafu38/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i> Liên hệ qua Facebook</a>
             </div>
-            <div class="form-footer"><button class="btn btn-primary" id="submit-button" type="submit"><span id="submit-label">Gửi tin nhắn</span> <i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button><span class="hint">Nhấn Gửi tin nhắn, sau đó hoàn tất CAPTCHA nếu FormSubmit yêu cầu. Việc hiện trang gửi thành công không đảm bảo email đã vào Inbox; người quản lý cần xác nhận FormSubmit và kiểm tra Spam nếu chưa nhận được.</span></div>
-          </form>
+            <p class="contact-direct-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Website không thu thập hoặc lưu nội dung tin nhắn.</p>
+          </aside>
         </div>
       </div>
     </section>
@@ -680,25 +681,7 @@
     dialog.addEventListener('close', () => document.body.classList.remove('modal-open'));
     dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
 
-    /* =====================================================
-       5. NÚT CHỌN DỊCH VỤ: Điền sẵn tên gói vào nội dung form
-       ===================================================== */
-    document.querySelectorAll('.service-cta').forEach(link => {
-      link.addEventListener('click', () => {
-        const message = document.getElementById('message');
-        const requested = 'Xin chào Hoàng, tôi muốn trao đổi về gói "' + link.dataset.service + '".';
-        if (!message.value.trim()) message.value = requested;
-      });
-    });
 
-    /* =====================================================
-       6. GỬI EMAIL QUA FORMSUBMIT - FORM HTML GỐC
-       KHÔNG chặn submit bằng AJAX để người dùng nhìn thấy
-       thông báo kích hoạt, CAPTCHA hoặc lỗi từ FormSubmit.
-       Khi muốn thay email nhận, sửa cả action của <form> và
-       email liên hệ ở HTML phía trên.
-       ===================================================== */
-    // Native HTML form tự gửi bằng method="POST" và action của <form>.
 
     /* =====================================================
        7. TỰ ĐỘNG CẬP NHẬT NĂM BẢN QUYỀN
@@ -718,8 +701,10 @@ const list=[
  ['#bai-viet .section-head p',['Short technical notes from topics I have studied. New posts can be added later.']],
  ['#tai-lieu .section-head p',['Official learning references and trusted technical documentation.']],
  ['.learning-card .read-btn',['Read note','Read note','Read note']],
- ['.contact-form h3',['Send a message']],['#submit-label',['Send message']],
- ['.contact-form .hint',['Submitting opens the FormSubmit confirmation page. The owner must activate the recipient mailbox first.']]
+ ['.contact-direct h3',['Connect with me directly']],
+ ['.contact-direct>p:first-of-type',['I am happy to connect about student projects, technology or internship opportunities. Reach me by email or Facebook.']],
+ ['.contact-direct-actions a',['Open email application','Message on Facebook']],
+ ['.contact-direct-note',['This website does not collect or store messages.']]
 ];
 /* Phần dịch bổ sung cho Skills, Projects, About, Contact và Blog. */
 list.push(
@@ -737,7 +722,6 @@ list.push(
  ['#lien-he .contact-intro h3',["Let's get in touch!"]],
  ['#lien-he .contact-intro>p',['You can contact me by email, phone or Facebook. I will respond when possible.']],
  ['#lien-he .contact-list small',['Email','Phone number','Location','Social media']],
- ['#lien-he .contact-form>p',['Fill in this form to send a message directly to my email.']],
  ['#lien-he .field label',['Full name *','Email *','Phone number','Message *']],
  ['#bai-viet .learning-card h3',['OOP: Four Core Principles','MVVM & Data Binding','Basic Git Workflow']],
  ['#bai-viet .learning-card p',['Encapsulation, inheritance, polymorphism and abstraction in Java.','Separating Model, View and ViewModel in WPF applications.','Branches, commits, pull and push in team projects.']],
@@ -759,7 +743,7 @@ const modal=document.getElementById('study-modal');let lastFocus=null;
 document.querySelectorAll('[data-article]').forEach(btn=>btn.addEventListener('click',()=>{const a=articles[btn.dataset.article];if(!a)return;lastFocus=document.activeElement;document.getElementById('study-modal-title').textContent=a.title;document.getElementById('study-modal-text').textContent=a.content;modal.classList.add('open');document.getElementById('study-close').focus()}));
 function closeModal(){modal.classList.remove('open');lastFocus?.focus()};
 document.getElementById('study-close').addEventListener('click',closeModal);modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-// Chatbot/FAQ đã được gỡ bỏ theo yêu cầu.
+// Giao diện liên hệ chỉ dùng liên kết trực tiếp.
 })();
 </script></body>
 </html>
